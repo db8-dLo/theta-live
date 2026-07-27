@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Theta — Membership</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0C11; --panel:#12161E; --panel2:#161B25; --bg2:#0D1017;
+    --line:rgba(255,255,255,.09); --line2:rgba(255,255,255,.055);
+    --tx:#E9EDF3; --mut:#8B94A5; --mut2:#5C6473;
+    --acc:#00AEEF; --acc-ink:#03141d; --pos:#33CE8B;
+    --f:'Archivo',system-ui,sans-serif; --fm:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--tx);font-family:var(--f);line-height:1.5;
+    background-image:linear-gradient(var(--line2) 1px,transparent 1px),linear-gradient(90deg,var(--line2) 1px,transparent 1px);
+    background-size:74px 74px;background-attachment:fixed}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  a{color:inherit}
+
+  .nav{padding:22px 0;border-bottom:1px solid var(--line2)}
+  .nav img{height:26px;display:block}
+
+  .pg{display:grid;grid-template-columns:1fr 396px;gap:48px;padding:64px 0 90px}
+  .pg-left{min-width:0}
+  .pg-right{min-width:0}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:11px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin-bottom:16px}
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--acc);box-shadow:0 0 10px var(--acc)}
+  h1{font-size:clamp(30px,4vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:18px}
+  h1 .acc{color:var(--acc)}
+  .lead{font-size:17px;color:var(--mut);line-height:1.6;max-width:52ch}
+
+  .blk{margin-top:40px}
+  .blk-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px}
+  .blk-h h3{font-size:22px;font-weight:800;letter-spacing:-.02em}
+  .desc p{color:var(--mut);font-size:15px;line-height:1.65;margin-bottom:12px;max-width:56ch}
+  .desc p b{color:var(--tx)}
+
+  .feat{list-style:none;margin:6px 0 0;padding:0}
+  .feat li{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--line2)}
+  .feat li:last-child{border-bottom:0}
+  .feat .ck{flex:none;width:24px;height:24px;border-radius:50%;background:rgba(0,174,239,.12);color:var(--acc);
+    display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-top:1px}
+  .feat .ft-t{font-size:15.5px;font-weight:700;letter-spacing:-.01em}
+  .feat .ft-s{margin-top:2px;font-size:13px;color:var(--mut2);line-height:1.5}
+
+  /* buy card (mirrors the join page) */
+  .buy{position:sticky;top:28px;border-radius:20px;overflow:hidden;border:1px solid var(--line);
+    background:var(--panel);box-shadow:0 50px 120px -46px rgba(0,0,0,.85)}
+  .bc-media{position:relative;aspect-ratio:16/10;background-color:#0c1017;
+    background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.03) 0 10px,transparent 10px 20px);cursor:pointer;overflow:hidden}
+  .bc-scrim{position:absolute;inset:0;background:radial-gradient(60% 60% at 50% 45%,transparent,rgba(6,8,12,.4)),linear-gradient(180deg,rgba(6,8,12,.05),rgba(6,8,12,.72))}
+  .bc-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;
+    background:rgba(0,174,239,.94);color:var(--acc-ink);display:flex;align-items:center;justify-content:center;font-size:22px;
+    box-shadow:0 14px 40px -8px rgba(0,174,239,.7);transition:transform .2s}
+  .bc-media:hover .bc-play{transform:translate(-50%,-50%) scale(1.08)}
+  .bc-plabel{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:16px 18px;font-size:12.5px;color:rgba(233,237,243,.85);font-weight:600}
+
+  .bc-in{padding:24px 24px 26px}
+  .plans{display:flex;flex-direction:column;gap:10px}
+  .plan{position:relative;display:flex;align-items:center;gap:14px;width:100%;text-align:left;
+    background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:14px;padding:15px 17px;cursor:pointer;
+    font-family:inherit;color:inherit;transition:border-color .15s,background .15s}
+  .plan:hover{border-color:rgba(0,174,239,.35)}
+  .plan.on{border-color:var(--acc);background:rgba(0,174,239,.08);box-shadow:0 0 0 1px var(--acc) inset}
+  .plan-radio{flex:none;width:20px;height:20px;border-radius:50%;border:2px solid var(--line2);position:relative;transition:.15s}
+  .plan.on .plan-radio{border-color:var(--acc)}
+  .plan.on .plan-radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--acc)}
+  .plan-main{flex:1;min-width:0}
+  .plan-name{font-size:15.5px;font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:9px}
+  .plan-badge{font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--acc-ink);
+    background:var(--acc);border-radius:100px;padding:3px 9px}
+  .plan-sub{margin-top:3px;font-size:12.5px;color:var(--mut2)}
+  .plan-price{text-align:right;flex:none}
+  .plan-price b{font-size:22px;font-weight:800;letter-spacing:-.02em}
+  .plan-price span{font-size:12px;color:var(--mut2);margin-left:1px}
+
+  .plan-save{margin-top:13px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--pos)}
+  .plan-save svg{width:15px;height:15px;flex:none}
+
+  .bc-ctas{margin-top:18px;display:flex;gap:10px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--f);font-weight:700;
+    font-size:15px;letter-spacing:-.01em;padding:15px 22px;border-radius:11px;border:1px solid transparent;cursor:pointer;transition:.15s}
+  .btn:active{transform:translateY(1px)}
+  .btn-w{background:#fff;color:#0a0c11}
+  .btn-w:hover{background:#e6ebf2}
+  .w100{width:100%}
+
+  .bc-note{margin-top:14px;text-align:center;font-size:12.5px;color:var(--mut2);line-height:1.55}
+  .bc-note b{color:var(--tx)}
+
+  @media(max-width:860px){
+    .pg{grid-template-columns:1fr;gap:32px;padding:40px 0 70px}
+    .pg-right{order:-1}
+    .buy{position:static}
+  }
+</style>
+</head>
+<body>
+  <header class="nav"><div class="wrap"><img src="data:image/png;base64,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" alt="Theta Trading"></div></header>
+
+  <main class="wrap">
+    <div class="pg">
+      <!-- LEFT: details -->
+      <div class="pg-left">
+        <p class="eyebrow"><span class="dot"></span> Theta Membership</p>
+        <h1>Everything Theta does, in <span class="acc">one membership.</span></h1>
+        <p class="lead">The trades, the reasoning, the live desk, and the courses that teach you to run it yourself. One price, no tiers to decode. Start with 7 days free.</p>
+
+        <div class="blk">
+          <div class="blk-h"><h3>What you get</h3></div>
+          <ul class="feat">
+            <li><span class="ck">✓</span><div><div class="ft-t">Daily trades, with the full research</div><div class="ft-s">Every trade we make, and the thinking behind each one, in your inbox every morning.</div></div></li>
+            <li><span class="ck">✓</span><div><div class="ft-t">A weekly live coaching call</div><div class="ft-s">Watch the desk work in real time and ask questions. The part members never miss.</div></div></li>
+            <li><span class="ck">✓</span><div><div class="ft-t">All three courses</div><div class="ft-s">Intro, fundamentals, and advanced, so the daily trades stop looking like magic.</div></div></li>
+          </ul>
+        </div>
+
+        <div class="blk">
+          <div class="blk-h"><h3>How the free trial works</h3></div>
+          <div class="desc">
+            <p><b>You start free for 7 days.</b> We take a card to begin, but you're not charged a cent until day 8, and you can cancel anytime before then and pay nothing.</p>
+            <p>After the trial, it continues at your chosen plan, and you can cancel whenever you like. No lock-in, no phone call.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: buy card -->
+      <aside class="pg-right">
+        <div class="buy">
+          <div class="bc-media">
+            <div class="bc-scrim"></div>
+            <div class="bc-play">▶</div>
+            <div class="bc-plabel">A look inside the membership</div>
+          </div>
+          <div class="bc-in">
+            <div class="plans" id="plans">
+              <button class="plan on" data-bill="annual">
+                <span class="plan-radio"></span>
+                <div class="plan-main">
+                  <div class="plan-name">Annual <span class="plan-badge">Best value</span></div>
+                  <div class="plan-sub">Billed yearly · 2 months free</div>
+                </div>
+                <div class="plan-price"><b>$1,500</b><span>/yr</span></div>
+              </button>
+              <button class="plan" data-bill="monthly">
+                <span class="plan-radio"></span>
+                <div class="plan-main">
+                  <div class="plan-name">Monthly</div>
+                  <div class="plan-sub">Billed monthly</div>
+                </div>
+                <div class="plan-price"><b>$150</b><span>/mo</span></div>
+              </button>
+            </div>
+
+            <div class="bc-ctas">
+              <button class="btn btn-w w100" id="cta">Start your 7-day trial &rarr;</button>
+            </div>
+            <p class="bc-note"><b>7 days free, then $1,500/yr.</b><br>Card required to start. Cancel anytime. Billed in CAD.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+<script>
+  var billing = "annual";
+  var noteEl = document.querySelector(".bc-note");
+
+  function render() {
+    document.querySelectorAll(".plan").forEach(function (p) {
+      p.classList.toggle("on", p.getAttribute("data-bill") === billing);
+    });
+    if (billing === "annual") {
+      noteEl.innerHTML = "<b>7 days free, then $1,500/yr.</b><br>Card required to start. Cancel anytime. Billed in CAD.";
+    } else {
+      noteEl.innerHTML = "<b>7 days free, then $150/mo.</b><br>Card required to start. Cancel anytime. Billed in CAD.";
+    }
+  }
+
+  document.querySelectorAll(".plan").forEach(function (p) {
+    p.addEventListener("click", function () { billing = p.getAttribute("data-bill"); render(); });
+  });
+
+  // Stripe Payment Links (TEST mode). Swap these two for the LIVE links at launch.
+  var PAYMENT_LINKS = {
+    monthly: "https://buy.stripe.com/test_00w3cwbetbI32lnbGR9sk02",
+    annual:  "https://buy.stripe.com/test_eVqaEY4Q53bxgcd9yJ9sk03"
+  };
+  document.getElementById("cta").addEventListener("click", function () {
+    window.location.href = PAYMENT_LINKS[billing];
+  });
+
+  render();
+</script>
+</body>
+</html>
