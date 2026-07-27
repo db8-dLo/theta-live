@@ -1,0 +1,15 @@
+# macOS junk
+.DS_Store
+
+# Secrets / environment files — never commit these
+.env
+.env.*
+
+# Local Netlify state
+.netlify/
+
+# Dependencies (in case any get added later)
+node_modules/
+
+# Logs
+*.log

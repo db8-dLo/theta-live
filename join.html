@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Join Theta Trading — Enroll</title>
+  <meta name="description" content="Enroll in Theta Trading and get full access to the masterclass, live coaching, and the community.">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDE2V5QGK3"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());gtag('config','G-FDE2V5QGK3');</script>
+  <style>
+*{box-sizing:border-box}
+:root{--bg:#0A0C11;--bg2:#0D1017;--panel:#12161E;--panel2:#161B25;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.055);--tx:#E9EDF3;--mut:#8B94A5;--mut2:#5C6473;--acc:#00AEEF;--acc-ink:#03141d;--pos:#33CE8B;--f-mono:'JetBrains Mono',ui-monospace,monospace;--f-disp:'Archivo',system-ui,sans-serif}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+a{color:var(--acc);text-decoration:none}
+a:hover{color:#5cd0ff}
+.upper{text-transform:uppercase}
+.wrap{max-width:1220px;margin:0 auto;padding:0 40px}
+/* nav (matches homepage) */
+.nav{position:fixed;top:18px;left:0;right:0;z-index:60;padding:0 40px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px}
+.nlogo{justify-self:start;display:block}
+.nlogo img{height:52px;display:block;filter:brightness(0) invert(1)}
+.navpill{justify-self:center;display:flex;align-items:center;height:56px;padding:0 32px;background:rgba(14,17,23,.55);backdrop-filter:blur(20px) saturate(1.3);border:1px solid var(--line);border-radius:100px;transition:background .2s,border-color .2s}
+.nav.scrolled .navpill{background:rgba(13,16,22,.92);border-color:var(--line2)}
+.nlinks{display:flex;align-items:center;gap:30px}
+.nlinks a{font-size:14px;color:var(--mut);font-weight:500;transition:color .15s;letter-spacing:-.01em;white-space:nowrap}
+.nlinks a:hover{color:var(--tx)}
+.navcta{justify-self:end;color:#fff;font-weight:800;display:none}
+@media(max-width:1040px){.navpill{display:none}.nav{grid-template-columns:1fr auto;padding:0 22px}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;letter-spacing:-.01em;padding:14px 22px;border-radius:11px;border:1px solid transparent;cursor:pointer;transition:.15s;text-align:center}
+.btn:active{transform:translateY(1px)}
+.btn-p{background:var(--acc);color:var(--acc-ink);box-shadow:0 8px 30px -8px rgba(0,174,239,.55)}
+.btn-p:hover{background:#28c0f7}
+.btn-w{background:#fff;color:#0a0c11}
+.btn-w:hover{background:#e6ebf2}
+.btn-g{background:transparent;color:var(--tx);border-color:var(--line)}
+.btn-g:hover{border-color:var(--acc);color:var(--acc)}
+.btn-sm{padding:10px 16px;font-size:14px;border-radius:9px}
+.nround{border-radius:100px}
+.w100{width:100%}
+.lab{font-family:'Archivo',sans-serif;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--mut2)}
+/* header band */
+.head{position:relative;overflow:hidden;background:linear-gradient(120deg,#0B0E14 0%,#0C1017 55%,#0B140F 100%);border-bottom:1px solid var(--line2)}
+.head-g{position:absolute;inset:0;background-image:linear-gradient(var(--line2) 1px,transparent 1px),linear-gradient(90deg,var(--line2) 1px,transparent 1px);background-size:64px 64px;opacity:.4;mask-image:radial-gradient(ellipse 90% 120% at 12% 20%,#000,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 90% 120% at 12% 20%,#000,transparent 70%)}
+.head-glow{position:absolute;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(0,174,239,.13),transparent 62%);top:-280px;right:-120px;filter:blur(10px);pointer-events:none}
+.head-in{position:relative;z-index:1;padding:34px 0 260px}
+.crumb{font-size:13px;color:var(--mut);letter-spacing:.01em;display:none;align-items:center;gap:9px}
+.crumb .sep{color:var(--mut2)}
+.crumb .cur{color:var(--tx)}
+.etitle-row{display:flex;align-items:center;gap:16px;margin-top:22px}
+.etitle-bar{width:5px;height:44px;border-radius:3px;background:var(--acc);box-shadow:0 0 16px rgba(0,174,239,.6);flex:none}
+.etitle{font-size:clamp(38px,4.6vw,58px);font-weight:900;letter-spacing:-.035em;line-height:1}
+.emeta{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-top:22px}
+.estat{display:inline-flex;align-items:center;gap:9px;font-size:14px;color:var(--mut)}
+.estat b{color:var(--tx);font-weight:700}
+.estat svg{width:17px;height:17px;color:var(--mut2);flex:none}
+.estat.live b{color:var(--pos)}
+.edesc{margin-top:26px;max-width:60ch;color:var(--tx);font-size:16.5px;line-height:1.6;opacity:.92}
+.enext{margin-top:26px;display:inline-flex;align-items:center;gap:12px;font-size:14px;color:var(--mut)}
+.enext .d{color:var(--acc);font-weight:700}
+.epay{margin-top:30px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px}
+.epay .lab{margin-right:4px}
+.paychip{height:30px;padding:0 12px;border-radius:7px;background:#fff;color:#0a0c11;font-weight:800;font-size:12px;letter-spacing:.02em;display:flex;align-items:center;font-family:'Archivo',sans-serif}
+.paycard{border-radius:5px;overflow:hidden;line-height:0;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.paycard svg{height:28px;width:44px;display:block}.paycard.wal{background:#fff;padding:0 8px;height:28px;display:inline-flex;align-items:center;justify-content:center}.paycard.wal svg{display:block}
+.bc-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;background:#000;z-index:3}
+.paychip.mc{background:#1a1f29;color:#fff;border:1px solid var(--line);gap:0}
+.paychip.mc .c1,.paychip.mc .c2{width:15px;height:15px;border-radius:50%}
+.paychip.mc .c1{background:#EB001B}.paychip.mc .c2{background:#F79E1B;margin-left:-6px;mix-blend-mode:screen}
+.paychip.wire{background:#0E7C4A;color:#fff;font-size:11px;letter-spacing:.06em}
+/* main layout */
+.page{position:relative}
+.deco{position:absolute;top:0;left:0;right:0;height:712px;z-index:0;overflow:hidden;background:linear-gradient(120deg,#0B0E14 0%,#0C1017 55%,#0B140F 100%)}
+.pg{position:relative;z-index:1;display:grid;grid-template-columns:1fr 396px;gap:48px;padding:112px 0 100px}
+.pg-left{min-width:0}
+.pg-right{min-width:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px}
+/* trusted */
+.trust{background:linear-gradient(180deg,rgba(0,174,239,.07),rgba(255,255,255,.012));border:1px solid var(--line);border-radius:18px;padding:26px 28px;margin-top:52px}
+.trust h4{margin:0;font-size:17px;font-weight:700;letter-spacing:-.01em}
+.trust p{margin:8px 0 0;color:var(--mut);font-size:14px;line-height:1.5;max-width:62ch}
+.trust-logos{margin-top:20px;display:flex;flex-wrap:wrap;gap:26px;align-items:center;color:var(--mut);font-weight:700;font-size:15px}
+.trust-logos span{display:inline-flex;align-items:center;gap:8px;opacity:.72}
+.dotm{width:9px;height:9px;border-radius:2px;background:var(--acc);opacity:.8}
+/* curriculum */
+.blk{margin-top:44px}
+.blk-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px}
+.blk-h h3{font-size:24px;font-weight:800;letter-spacing:-.02em}
+.blk-h .meta{font-size:13px;color:var(--mut2);font-weight:500}
+.mods{margin-top:22px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.modrow{border-top:1px solid var(--line2)}
+.modrow:first-child{border-top:0}
+.modq{width:100%;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:20px;padding:20px 24px;background:transparent;border:0;color:inherit;font-family:inherit;cursor:pointer;text-align:left;transition:background .15s}
+.modq:hover{background:rgba(0,174,239,.04)}
+.modrow.open .modq{background:rgba(0,174,239,.05)}
+.modchev{width:22px;height:22px;border-radius:6px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--mut);font-size:12px;transition:transform .25s,color .15s;flex:none}
+.modrow.open .modchev{transform:rotate(90deg);color:var(--acc);border-color:rgba(0,174,239,.4)}
+.modn{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);white-space:nowrap}
+.modt{font-size:16px;font-weight:700;letter-spacing:-.01em}
+.moddur,.modtime{font-size:13px;color:var(--mut2);white-space:nowrap}
+.moda{overflow:hidden;transition:max-height .3s ease}
+.moda-in{padding:0 24px 22px 66px;color:var(--mut);font-size:14.5px;line-height:1.6}.moda-in>span{font-weight:700;color:var(--tx)}
+.moda-in ul{margin:12px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px}
+.moda-in li{position:relative;padding-left:20px;color:var(--tx);font-size:14px}
+.moda-in li::before{content:"";position:absolute;left:2px;top:8px;width:5px;height:5px;border-radius:50%;background:var(--acc)}
+.desc{margin-top:20px;color:var(--mut);font-size:15.5px;line-height:1.7;max-width:66ch}
+.desc p{margin:0 0 16px}
+.desc b{color:var(--tx);font-weight:700}
+/* buy card */
+.buy{position:sticky;top:96px;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:var(--panel);box-shadow:0 50px 120px -46px rgba(0,0,0,.85)}
+.bc-media{position:relative;aspect-ratio:16/10;background-color:#0c1017;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.03) 0 10px,transparent 10px 20px);cursor:pointer;overflow:hidden}
+.bc-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bc-scrim{position:absolute;inset:0;background:radial-gradient(60% 60% at 50% 45%,transparent,rgba(6,8,12,.4)),linear-gradient(180deg,rgba(6,8,12,.05),rgba(6,8,12,.72))}
+.bc-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;background:rgba(0,174,239,.94);color:var(--acc-ink);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 14px 40px -8px rgba(0,174,239,.7);transition:transform .2s}
+.bc-media:hover .bc-play{transform:translate(-50%,-50%) scale(1.08)}
+.bc-plabel{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:16px 18px;font-size:12.5px;color:rgba(233,237,243,.85);font-weight:600}
+.bc-in{padding:24px 24px 26px}
+.bc-pricerow{display:flex;align-items:baseline;gap:12px}
+.bc-old{font-size:16px;color:var(--mut2);text-decoration:line-through}
+.bc-price{font-size:44px;font-weight:900;letter-spacing:-.035em;line-height:1}
+.bc-price .cur{font-size:.55em;font-weight:800;vertical-align:top;margin-right:1px}
+.bc-per{font-size:15px;color:var(--mut);font-weight:600}
+.bc-billed{margin-top:8px;font-size:13px;color:var(--mut2)}
+.plans{display:flex;flex-direction:column;gap:10px}
+.plan{position:relative;display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:14px;padding:15px 17px;cursor:pointer;font-family:inherit;color:inherit;transition:border-color .15s,background .15s}
+.plan:hover{border-color:rgba(0,174,239,.35)}
+.plan.on{border-color:var(--acc);background:rgba(0,174,239,.08);box-shadow:0 0 0 1px var(--acc) inset}
+.plan-radio{flex:none;width:20px;height:20px;border-radius:50%;border:2px solid var(--line2);position:relative;transition:.15s}
+.plan.on .plan-radio{border-color:var(--acc)}
+.plan.on .plan-radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--acc)}
+.plan-main{flex:1;min-width:0}
+.plan-name{font-size:15.5px;font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:9px}
+.plan-badge{font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--acc-ink);background:var(--acc);border-radius:100px;padding:3px 9px}
+.plan-sub{margin-top:3px;font-size:12.5px;color:var(--mut2)}
+.plan-price{text-align:right;flex:none}
+.plan-price b{font-size:22px;font-weight:800;letter-spacing:-.02em}
+.plan-price span{font-size:12px;color:var(--mut2);margin-left:1px}
+.plan-save{margin-top:13px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--pos)}
+.plan-save svg{width:15px;height:15px;flex:none}
+.bc-ctas{margin-top:18px;display:flex;gap:10px}
+.bc-fav{width:52px;flex:none;border-radius:11px;border:1px solid var(--line);background:transparent;color:var(--mut);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.15s}
+.bc-fav:hover{border-color:var(--acc);color:var(--acc)}
+.bc-fav.on{color:var(--acc);border-color:rgba(0,174,239,.4);background:rgba(0,174,239,.08)}
+.bc-fav svg{width:19px;height:19px}
+.bc-buy2{margin-top:10px}
+.bc-note{margin-top:14px;text-align:center;font-size:12.5px;color:var(--mut2);font-style:italic;line-height:1.5}
+.bc-note b{color:var(--mut);font-style:normal}
+.bc-sec{margin-top:24px;padding-top:22px;border-top:1px solid var(--line2)}
+.bc-sec h5{margin:0 0 14px;font-size:15px;font-weight:700;letter-spacing:-.01em}
+.incl{display:flex;flex-direction:column;gap:14px}
+.incl li{display:flex;gap:12px;align-items:flex-start;list-style:none}
+.incl .ic{flex:none;width:30px;height:30px;border-radius:9px;background:rgba(0,174,239,.12);border:1px solid rgba(0,174,239,.3);color:var(--acc);display:flex;align-items:center;justify-content:center;margin-top:1px}
+.incl .ic svg{width:15px;height:15px}
+.incl .tx{font-size:14px;color:var(--tx);line-height:1.5}
+.incl .tx b{font-weight:700}
+/* calendar */
+.cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.cal-nav .m{font-size:14px;font-weight:700}
+.cal-nav button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--tx);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.15s}
+.cal-nav button:hover{border-color:var(--acc);color:var(--acc)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal-dow{text-align:center;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mut2);padding:4px 0}
+.cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--tx);border-radius:9px;font-variant-numeric:tabular-nums}
+.cal-day.mut{color:var(--mut2);opacity:.5}
+.cal-day.avail{background:rgba(0,174,239,.12);color:var(--acc);font-weight:700;cursor:pointer;transition:.15s}
+.cal-day.avail:hover{background:rgba(0,174,239,.22)}
+.cal-day.sel{background:var(--acc);color:var(--acc-ink);font-weight:800;box-shadow:0 8px 20px -6px rgba(0,174,239,.7)}
+.cal-legend{margin-top:14px;display:flex;gap:16px;font-size:12px;color:var(--mut)}
+.cal-legend span{display:inline-flex;align-items:center;gap:7px}
+.lg-dot{width:9px;height:9px;border-radius:3px}
+.lg-dot.a{background:rgba(0,174,239,.4)}.lg-dot.s{background:var(--acc)}
+@media(max-width:960px){.pg{grid-template-columns:1fr;padding-top:96px}.buy{position:relative;top:0}.deco{height:560px}}
+@media(max-width:640px){.wrap{padding:0 22px}.top{padding:14px 22px}.modq{grid-template-columns:auto 1fr auto;gap:12px}.modtime{display:none}.moda-in{padding-left:24px}}
+.foot{border-top:1px solid var(--line2);padding:64px 0 48px;background:var(--bg2)}
+.foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--line2)}
+.foot img{height:24px;margin-bottom:16px}
+.foot .fh{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut2);margin-bottom:16px}
+.foot ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px}
+.foot a{font-size:14px;color:var(--mut)}
+.foot a:hover{color:var(--tx)}
+.foot .blurb{color:var(--mut);font-size:14px;line-height:1.6;max-width:34ch}
+.mono{font-family:var(--f-mono)}
+.socials{display:flex;gap:10px;margin-top:22px}
+.soc{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--mut);display:flex;align-items:center;justify-content:center;transition:border-color .15s,color .15s,background .15s}
+.soc:hover{border-color:var(--acc);color:var(--acc);background:rgba(0,174,239,.08)}
+.soc svg{width:18px;height:18px;display:block}
+.disclosure{margin-top:36px;font-size:12px;color:var(--mut2);line-height:1.65;max-width:none}
+.disclosure strong{color:var(--mut);font-weight:600}
+.foot-bot{margin-top:32px;display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:12.5px;color:var(--mut2)}
+.foot-contact{position:relative}
+.contact-pop{position:absolute;left:0;bottom:calc(100% + 14px);width:320px;padding:26px 28px;border-radius:16px;background:var(--bg2);border:1px solid var(--line);box-shadow:0 24px 60px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .18s ease,transform .18s ease,visibility .18s;z-index:20;pointer-events:none}
+.foot-contact:hover .contact-pop{opacity:1;visibility:visible;transform:translateY(0)}
+.contact-pop::after{content:"";position:absolute;top:100%;left:26px;border:8px solid transparent;border-top-color:var(--line)}
+.cpop-label{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut2);margin-bottom:16px}
+.cpop-name{font-family:var(--f-disp);font-weight:800;font-size:19px;color:var(--tx);margin-bottom:4px}
+.cpop-addr{font-size:14px;line-height:1.55;color:var(--mut)}
+.cpop-q{font-size:14px;color:var(--mut);margin-top:18px}
+.foot .cpop-mail{display:inline-block;margin-top:4px;color:var(--acc);font-size:14px}
+.foot .cpop-mail:hover{color:var(--acc)}
+@media(max-width:900px){.foot-top{grid-template-columns:1fr 1fr;gap:28px}.foot-bot{flex-direction:column;align-items:flex-start;gap:8px}}
+.mobhide{display:none}
+.devstage{min-height:100vh;display:flex;flex-direction:column;align-items:center;gap:22px;padding:44px 20px 64px;background:radial-gradient(120% 60% at 50% 0%,rgba(0,174,239,.09),transparent 60%),#06080c}
+.devbar{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+.phone{position:relative;width:402px;max-width:100%;height:min(860px,84vh);border-radius:54px;padding:13px;background:linear-gradient(158deg,#22262f,#0b0d12);box-shadow:0 0 0 2px #2c313b,0 60px 130px -34px rgba(0,0,0,.85)}
+.phone::before{content:"";position:absolute;top:15px;left:50%;transform:translateX(-50%);width:122px;height:26px;background:#05070b;border-radius:0 0 16px 16px;z-index:2}
+.phoneframe{width:100%;height:100%;border:0;border-radius:42px;background:#0A0C11;display:block}
+.navburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:46px;height:46px;border-radius:12px;border:1px solid var(--line);background:rgba(13,16,22,.72);cursor:pointer;justify-self:end;padding:0}
+.navburger span{width:22px;height:2px;background:var(--tx);border-radius:2px;margin:0 auto}
+.mobmenu{position:fixed;inset:0;z-index:120;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:32px;background:rgba(8,10,15,.98);backdrop-filter:blur(16px);opacity:0;visibility:hidden;transition:opacity .28s ease,visibility .28s}
+.mobmenu.open{opacity:1;visibility:visible}
+.mobmenu-x{position:absolute;top:22px;right:24px;width:44px;height:44px;border:0;background:transparent;color:var(--tx);font-size:34px;line-height:1;cursor:pointer}
+.mobmenu-links{display:flex;flex-direction:column;align-items:center;gap:24px}
+.mobmenu-links a{font-family:var(--f-disp);font-size:26px;font-weight:800;letter-spacing:-.02em;color:var(--tx)}
+.mobmenu-links .btn{font-family:'Archivo',sans-serif;margin-top:12px;font-size:16px;padding:15px 34px;color:#fff}
+@media(max-width:900px){
+.page{text-align:center;overflow-x:clip}
+.crumb{display:none}
+.nav{padding:0 16px}
+.nlogo img{height:42px}
+.navpill{display:none}
+.navcta{display:none}
+.navburger{display:flex}
+.modq{grid-template-columns:auto auto 1fr;gap:14px;align-items:center}
+.modn{order:0}
+.modt{text-align:right}
+.modtime{display:none}
+.modq>.modchev:last-child{display:none}
+.blk-h{justify-content:center;text-align:center}
+.blk-h h3{text-align:center}
+.pg{display:flex;flex-direction:column;gap:26px;padding-top:92px}
+.pg-left{display:contents}
+.pg-left>*{order:3}
+.crumb,.etitle-row,.edesc,.epay{order:1}
+.pg-right{order:2}
+.buy{position:static;top:auto}
+.epay{justify-content:center}
+.crumb{justify-content:center}
+.foot-top{grid-template-columns:repeat(3,1fr);gap:26px 14px}
+.foot-top>div:first-child{grid-column:1/-1;display:flex;flex-direction:column;align-items:center}
+.socials{justify-content:center}
+.foot ul{align-items:center;font-size:12.5px}
+.foot .fh{font-size:11px}
+.foot-bot{align-items:center}
+}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:2000;background:var(--acc);color:var(--acc-ink);padding:10px 16px;border-radius:8px;font-weight:700}.skip-link:focus{left:12px;top:12px}
+  </style>
+</head>
+<body>
+<div id="dc-root"><div class="sc-host" data-sc-name="join"><a class="skip-link" href="#main-content">Skip to content</a><div class="page " style="--acc: #00AEEF;"><nav class="nav "><a class="nlogo" href="index.html"><img src="assets/theta-logo.png" alt="Theta Trading"></a><div class="navpill"><div class="nlinks"><a href="index.html#masterclass">Our strategy</a><a href="index.html#frustration">How it works</a><a href="index.html#testimonials-video">Testimonials</a><a href="index.html#pricing">Pricing</a><a href="index.html#faq">FAQ</a></div></div><button class="navburger" aria-label="Open menu"><span></span><span></span><span></span></button></nav><div class="mobmenu "><button class="mobmenu-x" aria-label="Close menu">×</button><div class="mobmenu-links"><a href="index.html">Home</a><a href="index.html#masterclass">Our strategy</a><a href="index.html#testimonials-video">Testimonials</a><a href="index.html#faq">FAQ</a><a class="btn btn-p nround" href="#enroll">Enroll now</a></div></div><main id="main-content"><div class="deco"><div class="head-g" aria-hidden="true"></div><div class="head-glow" aria-hidden="true"></div></div><div class="wrap pg"><div class="pg-left"><div class="crumb"><a href="index.html">Home</a><span class="sep">›</span><span>Membership</span><span class="sep">›</span><span class="cur">The Masterclass</span></div><div class="etitle-row"><span class="etitle-bar"></span><h1 class="etitle">Theta Trading<br>Masterclass</h1></div><p class="edesc">“I avoided options for years because they felt overwhelming. Three months in, I'm running a repeatable monthly process, and I finally understand every trade I place.”&nbsp;</p><div class="epay"><span class="lab">You can pay via</span><span class="paycard"><svg width="44" height="28" aria-label="Visa" viewBox="0 0 780 500" fill="none" xmlns="http://www.w3.org/2000/svg"> <g clip-path="url(#clip0_6278_125833_visa)"> <path d="M780 0H0V500H780V0Z" fill="#1434CB"/> <path d="M489.823 143.111C442.988 143.111 401.134 167.393 401.134 212.256C401.134 263.706 475.364 267.259 475.364 293.106C475.364 303.989 462.895 313.731 441.6 313.731C411.377 313.731 388.789 300.119 388.789 300.119L379.123 345.391C379.123 345.391 405.145 356.889 439.692 356.889C490.898 356.889 531.19 331.415 531.19 285.784C531.19 231.419 456.652 227.971 456.652 203.981C456.652 195.455 466.887 186.114 488.122 186.114C512.081 186.114 531.628 196.014 531.628 196.014L541.087 152.289C541.087 152.289 519.818 143.111 489.823 143.111ZM61.3294 146.411L60.1953 153.011C60.1953 153.011 79.8988 156.618 97.645 163.814C120.495 172.064 122.122 176.868 125.971 191.786L167.905 353.486H224.118L310.719 146.411H254.635L198.989 287.202L176.282 167.861C174.199 154.203 163.651 146.411 150.74 146.411H61.3294ZM333.271 146.411L289.275 353.486H342.756L386.598 146.411H333.271ZM631.554 146.411C618.658 146.411 611.825 153.318 606.811 165.386L528.458 353.486H584.542L595.393 322.136H663.72L670.318 353.486H719.805L676.633 146.411H631.554ZM638.848 202.356L655.473 280.061H610.935L638.848 202.356Z" fill="white"/> </g> <defs> <clipPath id="clip0_6278_125833_visa"> <rect width="780" height="500" fill="white"/> </clipPath> </defs> </svg></span><span class="paycard"><svg width="44" height="28" aria-label="Mastercard" viewBox="0 0 780 500" fill="none" xmlns="http://www.w3.org/2000/svg"> <g clip-path="url(#clip0_6278_125825_mastercard)"> <path d="M780 0H0V500H780V0Z" fill="#253747"/> <path d="M211.053 467.045V438.109C211.053 427.041 204.311 419.793 192.736 419.793C186.949 419.793 180.657 421.703 176.33 427.996C172.959 422.715 168.127 419.793 160.879 419.793C156.047 419.793 151.215 421.254 147.395 426.535V420.748H137.281V467.045H147.395V441.481C147.395 433.278 151.721 429.401 158.463 429.401C165.205 429.401 168.577 433.727 168.577 441.481V467.045H178.69V441.481C178.69 433.278 183.522 429.401 189.759 429.401C196.501 429.401 199.872 433.727 199.872 441.481V467.045H211.053ZM361.068 420.748H344.662V406.758H334.549V420.748H325.391V429.906H334.549V451.145C334.549 461.764 338.875 468 350.449 468C354.776 468 359.608 466.539 362.979 464.629L360.057 455.92C357.135 457.831 353.764 458.336 351.348 458.336C346.516 458.336 344.606 455.415 344.606 450.639V429.906H361.012V420.748H361.068ZM446.92 419.737C441.133 419.737 437.256 422.658 434.84 426.479V420.692H424.727V466.989H434.84V440.919C434.84 433.221 438.211 428.839 444.504 428.839C446.414 428.839 448.83 429.345 450.797 429.794L453.718 420.13C451.696 419.737 448.83 419.737 446.92 419.737ZM317.187 424.569C312.356 421.198 305.613 419.737 298.365 419.737C286.791 419.737 279.094 425.524 279.094 434.682C279.094 442.38 284.881 446.762 294.994 448.167L299.826 448.672C305.108 449.628 308.029 451.088 308.029 453.504C308.029 456.875 304.152 459.291 297.41 459.291C290.668 459.291 285.33 456.875 281.959 454.459L277.127 462.157C282.409 466.034 289.657 467.944 296.904 467.944C310.389 467.944 318.143 461.651 318.143 452.999C318.143 444.796 311.85 440.469 302.242 439.008L297.41 438.503C293.084 437.997 289.713 437.042 289.713 434.176C289.713 430.805 293.084 428.895 298.421 428.895C304.209 428.895 309.996 431.311 312.917 432.772L317.187 424.569ZM586.26 419.737C580.473 419.737 576.596 422.658 574.18 426.479V420.692H564.067V466.989H574.18V440.919C574.18 433.221 577.551 428.839 583.844 428.839C585.754 428.839 588.17 429.345 590.137 429.794L593.059 420.242C591.092 419.737 588.227 419.737 586.26 419.737ZM457.033 443.897C457.033 457.887 466.697 468 481.643 468C488.385 468 493.217 466.539 498.049 462.719L493.217 454.516C489.34 457.437 485.519 458.842 481.137 458.842C472.934 458.842 467.147 453.055 467.147 443.897C467.147 435.188 472.934 429.401 481.137 428.951C485.463 428.951 489.34 430.412 493.217 433.278L498.049 425.074C493.217 421.198 488.385 419.793 481.643 419.793C466.697 419.737 457.033 429.906 457.033 443.897ZM550.582 443.897V420.748H540.469V426.535C537.098 422.209 532.266 419.793 525.973 419.793C512.938 419.793 502.825 429.906 502.825 443.897C502.825 457.887 512.938 468 525.973 468C532.715 468 537.547 465.584 540.469 461.258V467.045H550.582V443.897ZM513.444 443.897C513.444 435.693 518.725 428.951 527.434 428.951C535.637 428.951 541.424 435.244 541.424 443.897C541.424 452.1 535.637 458.842 527.434 458.842C518.781 458.336 513.444 452.043 513.444 443.897ZM392.42 419.737C378.935 419.737 369.271 429.401 369.271 443.84C369.271 458.336 378.935 467.944 392.926 467.944C399.668 467.944 406.41 466.034 411.748 461.651L406.916 454.403C403.039 457.325 398.207 459.235 393.431 459.235C387.139 459.235 380.902 456.314 379.441 448.167H413.658C413.658 446.706 413.658 445.751 413.658 444.29C414.108 429.401 405.399 419.737 392.42 419.737ZM392.42 428.446C398.713 428.446 403.039 432.322 403.994 439.514H379.891C380.846 433.278 385.172 428.446 392.42 428.446ZM643.682 443.897V402.432H633.568V426.535C630.197 422.209 625.365 419.793 619.073 419.793C606.037 419.793 595.924 429.906 595.924 443.897C595.924 457.887 606.037 468 619.073 468C625.815 468 630.647 465.584 633.568 461.258V467.045H643.682V443.897ZM606.543 443.897C606.543 435.693 611.825 428.951 620.533 428.951C628.736 428.951 634.524 435.244 634.524 443.897C634.524 452.1 628.736 458.842 620.533 458.842C611.825 458.336 606.543 452.043 606.543 443.897ZM267.969 443.897V420.748H257.855V426.535C254.484 422.209 249.652 419.793 243.36 419.793C230.325 419.793 220.211 429.906 220.211 443.897C220.211 457.887 230.325 468 243.36 468C250.102 468 254.934 465.584 257.855 461.258V467.045H267.969V443.897ZM230.381 443.897C230.381 435.693 235.662 428.951 244.371 428.951C252.574 428.951 258.361 435.244 258.361 443.897C258.361 452.1 252.574 458.842 244.371 458.842C235.662 458.336 230.381 452.043 230.381 443.897Z" fill="white"/> <path d="M465.738 69.1387H313.812V342.088H465.738V69.1387Z" fill="#FF5A00"/> <path d="M323.926 205.613C323.926 150.158 349.996 100.94 390 69.1387C360.559 45.9902 323.42 32 282.91 32C186.945 32 109.297 109.648 109.297 205.613C109.297 301.578 186.945 379.227 282.91 379.227C323.42 379.227 360.559 365.237 390 342.088C349.94 310.737 323.926 261.069 323.926 205.613Z" fill="#EB001B"/> <path d="M670.711 205.613C670.711 301.578 593.062 379.227 497.098 379.227C456.588 379.227 419.449 365.237 390.008 342.088C430.518 310.231 456.082 261.069 456.082 205.613C456.082 150.158 430.012 100.94 390.008 69.1387C419.393 45.9902 456.532 32 497.041 32C593.062 32 670.711 110.154 670.711 205.613Z" fill="#F79E1B"/> </g> <defs> <clipPath id="clip0_6278_125825_mastercard"> <rect width="780" height="500" fill="white"/> </clipPath> </defs> </svg></span><span class="paycard"><svg width="44" height="28" aria-label="American Express" enable-background="new 0 0 780 500" version="1.1" viewBox="0 0 780 500" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><rect width="780" height="500" fill="#2557D6"/><path d="m0.253 235.69h37.441l8.442-19.51h18.9l8.42 19.51h73.668v-14.915l6.576 14.98h38.243l6.576-15.202v15.138h183.08l-0.085-32.026h3.542c2.479 0.083 3.204 0.302 3.204 4.226v27.8h94.689v-7.455c7.639 3.92 19.518 7.455 35.148 7.455h39.836l8.525-19.51h18.9l8.337 19.51h76.765v-18.532l11.626 18.532h61.515v-122.51h-60.88v14.468l-8.522-14.468h-62.471v14.468l-7.828-14.468h-84.38c-14.123 0-26.539 1.889-36.569 7.153v-7.153h-58.229v7.153c-6.383-5.426-15.079-7.153-24.75-7.153h-212.74l-14.274 31.641-14.659-31.641h-67.005v14.468l-7.362-14.468h-57.145l-26.539 58.246v64.261h3e-3zm236.34-17.67h-22.464l-0.083-68.794-31.775 68.793h-19.24l-31.858-68.854v68.854h-44.57l-8.42-19.592h-45.627l-8.505 19.592h-23.801l39.241-87.837h32.559l37.269 83.164v-83.164h35.766l28.678 59.587 26.344-59.587h36.485l1e-3 87.838zm-165.9-37.823l-14.998-35.017-14.915 35.017h29.913zm255.3 37.821h-73.203v-87.837h73.203v18.291h-51.289v15.833h50.06v18.005h-50.061v17.542h51.289l1e-3 18.166zm103.16-64.18c0 14.004-9.755 21.24-15.439 23.412 4.794 1.748 8.891 4.838 10.84 7.397 3.094 4.369 3.628 8.271 3.628 16.116v17.255h-22.104l-0.083-11.077c0-5.285 0.528-12.886-3.458-17.112-3.202-3.09-8.083-3.76-15.973-3.76h-23.523v31.95h-21.914v-87.838h50.401c11.199 0 19.451 0.283 26.535 4.207 6.933 3.924 11.09 9.652 11.09 19.45zm-27.699 13.042c-3.013 1.752-6.573 1.81-10.841 1.81h-26.62v-19.51h26.982c3.818 0 7.804 0.164 10.393 1.584 2.842 1.28 4.601 4.003 4.601 7.765 0 3.84-1.674 6.929-4.515 8.351zm62.844 51.138h-22.358v-87.837h22.358v87.837zm259.56 0h-31.053l-41.535-65.927v65.927h-44.628l-8.527-19.592h-45.521l-8.271 19.592h-25.648c-10.649 0-24.138-2.257-31.773-9.715-7.701-7.458-11.708-17.56-11.708-33.533 0-13.027 2.395-24.936 11.812-34.347 7.085-7.01 18.18-10.242 33.28-10.242h21.215v18.821h-20.771c-7.997 0-12.514 1.14-16.862 5.203-3.735 3.699-6.298 10.69-6.298 19.897 0 9.41 1.951 16.196 6.023 20.628 3.373 3.476 9.506 4.53 15.272 4.53h9.842l30.884-69.076h32.835l37.102 83.081v-83.08h33.366l38.519 61.174v-61.174h22.445v87.833zm-133.2-37.82l-15.165-35.017-15.081 35.017h30.246zm189.04 178.08c-5.322 7.457-15.694 11.238-29.736 11.238h-42.319v-18.84h42.147c4.181 0 7.106-0.527 8.868-2.175 1.665-1.474 2.605-3.554 2.591-5.729 0-2.561-1.064-4.593-2.677-5.811-1.59-1.342-3.904-1.95-7.722-1.95-20.574-0.67-46.244 0.608-46.244-27.194 0-12.742 8.443-26.156 31.439-26.156h43.649v-17.479h-40.557c-12.237 0-21.129 2.81-27.425 7.174v-7.175h-59.985c-9.595 0-20.854 2.279-26.179 7.175v-7.175h-107.12v7.175c-8.524-5.892-22.908-7.175-29.549-7.175h-70.656v7.175c-6.745-6.258-21.742-7.175-30.886-7.175h-79.077l-18.094 18.764-16.949-18.764h-118.13v122.59h115.9l18.646-19.062 17.565 19.062 71.442 0.061v-28.838h7.021c9.479 0.14 20.66-0.228 30.523-4.312v33.085h58.928v-31.952h2.842c3.628 0 3.985 0.144 3.985 3.615v28.333h179.01c11.364 0 23.244-2.786 29.824-7.845v7.845h56.78c11.815 0 23.354-1.587 32.134-5.649l2e-3 -22.84zm-354.94-47.155c0 24.406-19.005 29.445-38.159 29.445h-27.343v29.469h-42.591l-26.984-29.086-28.042 29.086h-86.802v-87.859h88.135l26.961 28.799 27.875-28.799h70.021c17.389 0 36.929 4.613 36.929 28.945zm-174.22 40.434h-53.878v-17.48h48.11v-17.926h-48.11v-15.974h54.939l23.969 25.604-25.03 25.776zm86.81 10.06l-33.644-35.789 33.644-34.65v70.439zm49.757-39.066h-28.318v-22.374h28.572c7.912 0 13.404 3.09 13.404 10.772 0 7.599-5.238 11.602-13.658 11.602zm148.36-40.373h73.138v18.17h-51.315v15.973h50.062v17.926h-50.062v17.48l51.314 0.08v18.23h-73.139l2e-3 -87.859zm-28.119 47.029c4.878 1.725 8.865 4.816 10.734 7.375 3.095 4.291 3.542 8.294 3.631 16.037v17.418h-22.002v-10.992c0-5.286 0.531-13.112-3.542-17.198-3.201-3.147-8.083-3.899-16.076-3.899h-23.42v32.09h-22.02v-87.859h50.594c11.093 0 19.173 0.47 26.366 4.146 6.915 4.004 11.266 9.487 11.266 19.511-1e-3 14.022-9.764 21.178-15.531 23.371zm-12.385-11.107c-2.932 1.667-6.556 1.811-10.818 1.811h-26.622v-19.732h26.982c3.902 0 7.807 0.08 10.458 1.587 2.84 1.423 4.538 4.146 4.538 7.903 0 3.758-1.699 6.786-4.538 8.431zm197.82 5.597c4.27 4.229 6.554 9.571 6.554 18.613 0 18.9-12.322 27.723-34.425 27.723h-42.68v-18.84h42.51c4.157 0 7.104-0.525 8.95-2.175 1.508-1.358 2.589-3.333 2.589-5.729 0-2.561-1.17-4.592-2.675-5.811-1.675-1.34-3.986-1.949-7.803-1.949-20.493-0.67-46.157 0.609-46.157-27.192 0-12.744 8.355-26.158 31.33-26.158h43.932v18.7h-40.198c-3.984 0-6.575 0.145-8.779 1.587-2.4 1.422-3.29 3.534-3.29 6.319 0 3.314 2.037 5.57 4.795 6.546 2.311 0.77 4.795 0.995 8.526 0.995l11.797 0.306c11.895 0.276 20.061 2.248 25.024 7.065zm86.955-23.52h-39.938c-3.986 0-6.638 0.144-8.867 1.587-2.312 1.423-3.202 3.534-3.202 6.322 0 3.314 1.951 5.568 4.791 6.544 2.312 0.771 4.795 0.996 8.444 0.996l11.878 0.304c11.983 0.284 19.982 2.258 24.86 7.072 0.891 0.67 1.422 1.422 2.033 2.175v-25h1e-3z" fill="#fff"/></svg></span><span class="paycard"><svg width="44" height="28" aria-label="Discover" width="780" height="500" viewBox="0 0 780 500" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><path d="M54.992 0C0 0 0 0 0 0v0C0 0 0 0 0 501h670.016C755.373 501 780 476.37 780 445.996V0C0 0 755.381 0 725.008 0H54.992z" fill="#4D4D4D"/><path d="M327.152 161.893c8.837 0 16.248 1.784 25.268 6.09v22.751c-8.544-7.863-15.955-11.154-25.756-11.154-19.264 0-34.414 15.015-34.414 34.05 0 20.075 14.681 34.196 35.37 34.196 9.312 0 16.586-3.12 24.8-10.857v22.763c-9.341 4.14-16.911 5.776-25.756 5.776-31.278 0-55.582-22.596-55.582-51.737 0-28.826 24.951-51.878 56.07-51.878zm-97.113.627c11.546 0 22.11 3.72 30.943 10.994l-10.748 13.248c-5.35-5.646-10.41-8.028-16.564-8.028-8.853 0-15.3 4.745-15.3 10.989 0 5.354 3.619 8.188 15.944 12.482 23.365 8.044 30.29 15.176 30.29 30.926 0 19.193-14.976 32.553-36.32 32.553-15.63 0-26.994-5.795-36.458-18.872l13.268-12.03c4.73 8.61 12.622 13.222 22.42 13.222 9.163 0 15.947-5.952 15.947-13.984 0-4.164-2.055-7.734-6.158-10.258-2.066-1.195-6.158-2.977-14.2-5.647-19.291-6.538-25.91-13.527-25.91-27.185 0-16.225 14.214-28.41 32.846-28.41zm234.723 1.728h22.437l28.084 66.592 28.446-66.592h22.267l-45.494 101.686h-11.053l-44.687-101.686zm-397.348.152h30.15c33.312 0 56.534 20.382 56.534 49.641 0 14.59-7.104 28.696-19.118 38.057-10.108 7.901-21.626 11.445-37.574 11.445H67.414V164.4zm96.135 0h20.54v99.143h-20.54V164.4zm411.734 0h58.252v16.8H595.81v22.005h36.336v16.791h-36.336v26.762h37.726v16.785h-58.252V164.4zm71.858 0h30.455c23.69 0 37.265 10.71 37.265 29.272 0 15.18-8.514 25.14-23.986 28.105l33.148 41.766h-25.26l-28.429-39.828h-2.678v39.828h-20.515V164.4zm20.515 15.616v30.025h6.002c13.117 0 20.069-5.362 20.069-15.328 0-9.648-6.954-14.697-19.745-14.697h-6.326zM87.94 181.199v65.559h5.512c13.273 0 21.656-2.394 28.11-7.88 7.103-5.955 11.376-15.465 11.376-24.98 0-9.499-4.273-18.725-11.376-24.681-6.785-5.78-14.837-8.018-28.11-8.018H87.94z" fill="#FFF"/><path d="M415.13 161.213c30.941 0 56.022 23.58 56.022 52.709v.033c0 29.13-25.081 52.742-56.021 52.742s-56.022-23.613-56.022-52.742v-.033c0-29.13 25.082-52.71 56.022-52.71zM779.983 288.36c-26.05 18.33-221.077 149.34-558.754 212.623H724.99c30.365 0 54.992-0 54.992-0V0z" fill="#F47216"/></g></svg></span><span class="paycard wal"><svg width="36" height="15" viewBox="0 0 512 211" aria-label="Apple Pay" xmlns="http://www.w3.org/2000/svg"><g> <path d="M93.5520633,27.1031049 C87.5513758,34.2039183 77.9502759,39.8045599 68.349176,39.0044683 C67.1490386,29.4033684 71.849577,19.2021998 77.3502072,12.901478 C83.3508946,5.6006416 93.8520976,0.400045829 102.353071,0 C103.353186,10.0011457 99.4527392,19.8022685 93.5520633,27.1031049 Z M102.25306,40.904686 C88.3514675,40.1045943 76.4501041,48.8055911 69.8493479,48.8055911 C63.1485803,48.8055911 53.0474231,41.3047318 42.0461628,41.5047547 C27.7445244,41.7047776 14.4430006,49.8057057 7.14216427,62.7071836 C-7.8595543,88.5101396 3.24171744,126.714516 17.7433787,147.716922 C24.8441922,158.118114 33.345166,169.51942 44.5464492,169.119374 C55.1476637,168.719328 59.3481449,162.218584 72.1496114,162.218584 C85.0510894,162.218584 88.7515133,169.119374 99.9527965,168.919351 C111.554126,168.719328 118.854962,158.51816 125.955775,148.116968 C134.056703,136.315616 137.357081,124.814299 137.557104,124.21423 C137.357081,124.014207 115.154538,115.513233 114.954515,89.9103 C114.754492,68.5078482 132.45652,58.3066795 133.256612,57.7066108 C123.255466,42.9049151 107.653679,41.3047318 102.25306,40.904686 Z M182.56226,11.9013634 L182.56226,167.819225 L206.765033,167.819225 L206.765033,114.513118 L240.268871,114.513118 C270.872377,114.513118 292.37484,93.5107124 292.37484,63.1072295 C292.37484,32.7037465 271.272423,11.9013634 241.068963,11.9013634 L182.56226,11.9013634 Z M206.765033,32.3037007 L234.668229,32.3037007 C255.670635,32.3037007 267.67201,43.5049839 267.67201,63.2072409 C267.67201,82.909498 255.670635,94.2107926 234.568218,94.2107926 L206.765033,94.2107926 L206.765033,32.3037007 Z M336.579904,169.019363 C351.781646,169.019363 365.883261,161.31848 372.283994,149.117083 L372.784052,149.117083 L372.784052,167.819225 L395.186618,167.819225 L395.186618,90.2103344 C395.186618,67.7077565 377.184556,53.2060952 349.481382,53.2060952 C323.778438,53.2060952 304.776261,67.9077794 304.076181,88.1100938 L325.878678,88.1100938 C327.678884,78.5089939 336.579904,72.2082721 348.781302,72.2082721 C363.582998,72.2082721 371.883949,79.1090626 371.883949,91.8105177 L371.883949,100.411503 L341.680488,102.211709 C313.577269,103.911904 298.375528,115.413222 298.375528,135.415513 C298.375528,155.617827 314.077326,169.019363 336.579904,169.019363 Z M343.080649,150.517243 C330.179171,150.517243 321.978231,144.316533 321.978231,134.815444 C321.978231,125.014321 329.879137,119.313668 344.980867,118.413565 L371.883949,116.713371 L371.883949,125.514379 C371.883949,140.116051 359.482528,150.517243 343.080649,150.517243 Z M425.090044,210.224083 C448.692748,210.224083 459.794019,201.223052 469.495131,173.919924 L512,54.7062671 L487.397182,54.7062671 L458.893916,146.816819 L458.393859,146.816819 L429.890594,54.7062671 L404.587695,54.7062671 L445.592392,168.219271 L443.39214,175.120061 C439.691716,186.821402 433.691029,191.321918 422.989803,191.321918 C421.089585,191.321918 417.389162,191.121895 415.88899,190.921872 L415.88899,209.624014 C417.28915,210.02406 423.289838,210.224083 425.090044,210.224083 Z" fill="#000000"></path> </g></svg></span><span class="paycard wal"><svg width="38" height="15" viewBox="0 0 512 204" aria-label="Google Pay" xmlns="http://www.w3.org/2000/svg"><title>Google Pay</title> <g> <path d="M362.926585,55.0572275 C377.002187,55.0572275 387.878788,58.8960279 396.196189,66.5736286 C404.51359,74.2512294 408.35239,84.4880304 408.35239,97.2840316 L408.35239,158.704838 L390.437988,158.704838 L390.437988,144.629236 L389.798188,144.629236 C382.120587,156.145637 371.243986,161.903838 358.447985,161.903838 C347.571384,161.903838 337.974383,158.704838 330.296782,152.306837 C323.258982,145.908836 318.780381,136.951636 318.780381,127.354635 C318.780381,117.117834 322.619182,108.800433 330.296782,102.402432 C337.974383,96.0044315 348.850984,93.4452313 361.646985,93.4452313 C373.163386,93.4452313 382.120587,95.3646315 389.158388,99.8432319 L389.158388,95.3646315 C389.158388,89.3931642 386.92904,83.421697 382.470345,79.5309543 L381.480787,78.7298298 C376.362387,74.2512294 369.964386,71.6920291 362.926585,71.6920291 C352.049984,71.6920291 343.732584,76.1706296 337.974383,85.1278305 L321.339581,74.8910295 C331.576382,61.4552281 345.012184,55.0572275 362.926585,55.0572275 Z M272.714777,11.5508233 C284.195633,11.5508233 295.105804,15.5456243 303.828346,22.9962452 L305.34458,24.3468245 C314.301781,32.0244253 318.780381,43.5408264 318.780381,55.6970276 C318.780381,67.8532288 314.301781,78.7298298 305.34458,87.0472306 C296.387379,95.3646315 285.510778,99.8432319 272.714777,99.8432319 L242.004374,99.2034318 L242.004374,158.704838 L222.810372,158.704838 L222.810372,11.5508233 L272.714777,11.5508233 Z M365.485786,108.800433 C357.808185,108.800433 351.410184,110.719833 346.291784,114.558633 C341.173383,117.757634 338.614183,122.236234 338.614183,127.994435 C338.614183,133.112835 341.173383,137.591436 345.012184,140.150636 C349.490784,143.349636 354.609185,145.269036 359.727585,145.269036 C366.893346,145.269036 374.059107,142.482352 379.664324,137.429163 L380.840987,136.311835 C387.238988,130.553635 390.437988,123.515834 390.437988,115.838233 C384.679788,111.359633 376.362387,108.800433 365.485786,108.800433 Z M273.994377,29.465225 L242.004374,29.465225 L242.004374,80.64923 L273.994377,80.64923 C281.032177,80.64923 288.069978,78.0900298 292.548579,72.9716293 C302.78538,63.3746283 302.78538,47.3796268 293.188379,37.7826258 L292.548579,37.1428258 C287.430178,32.0244253 281.032177,28.825425 273.994377,29.465225 Z M512,58.2562278 L448.659794,203.490842 L429.465792,203.490842 L453.138394,152.946637 L411.55139,58.8960279 L432.024992,58.8960279 L462.095595,131.193435 L462.735395,131.193435 L492.166198,58.8960279 L512,58.8960279 L512,58.2562278 Z" fill="#5F6368"></path> <g> <path d="M165.868166,86.4074306 C165.868166,80.64923 165.228366,74.8910295 164.588566,69.1328289 L84.6135583,69.1328289 L84.6135583,101.762632 L130.039363,101.762632 C128.119963,111.999433 122.361762,121.596434 113.404561,127.354635 L113.404561,148.468037 L140.915964,148.468037 C156.910965,133.752635 165.868166,111.999433 165.868166,86.4074306 Z" fill="#4285F4"></path> <path d="M84.6135583,168.941639 C107.646361,168.941639 126.840362,161.264038 140.915964,148.468037 L113.404561,127.354635 C105.72696,132.473035 96.1299594,135.672035 84.6135583,135.672035 C62.8603561,135.672035 43.6663543,120.956634 37.2683536,100.483032 L9.11715089,100.483032 L9.11715089,122.236234 C23.8325523,151.027237 52.6235551,168.941639 84.6135583,168.941639 Z" fill="#34A853"></path> <path d="M37.2683536,100.483032 C33.4295533,90.246231 33.4295533,78.7298298 37.2683536,67.8532288 L37.2683536,46.1000266 L9.11715089,46.1000266 C-3.0390503,69.772629 -3.0390503,97.9238317 9.11715089,122.236234 L37.2683536,100.483032 Z" fill="#FBBC04"></path> <path d="M84.6135583,33.3040254 C96.7697595,33.3040254 108.286161,37.7826258 117.243361,46.1000266 L117.243361,46.1000266 L141.555764,21.7876243 C126.200562,7.71202289 105.72696,-0.60537792 85.2533583,0.0344221425 C53.2633552,0.0344221425 23.8325523,17.9488239 9.75695095,46.7398267 L37.9081537,68.4930288 C43.6663543,48.0194268 62.8603561,33.3040254 84.6135583,33.3040254 Z" fill="#EA4335"></path> </g> </g></svg></span></div><div class="blk"><div class="blk-h"><h3>Program curriculum</h3></div><div class="mods"><div class="modrow open"><button class="modq"><span class="modchev">›</span><span class="modn"><span class="sc-interp">Chapter 01</span></span><span class="modt"><span class="sc-interp">Introduction</span></span><span class="modtime"><span class="sc-interp">3 lessons</span></span><span class="modchev" style="visibility: hidden;"></span></button><div class="moda" style="max-height: 340px;"><div class="moda-in"><span class="sc-interp">What the program is, who it's for, and the promise.</span><ul><li><span class="sc-interp">How the curriculum is structured</span></li><li><span class="sc-interp">The mindset of a disciplined income trader</span></li></ul></div></div></div><div class="modrow "><button class="modq"><span class="modchev">›</span><span class="modn"><span class="sc-interp">Chapter 02</span></span><span class="modt"><span class="sc-interp">Financial Markets Overview</span></span><span class="modtime"><span class="sc-interp">4 lessons</span></span><span class="modchev" style="visibility: hidden;"></span></button><div class="moda" style="max-height: 0px;"><div class="moda-in"><span class="sc-interp">How markets really work, and where you fit in.</span><ul><li><span class="sc-interp">Stocks, indexes and how prices move</span></li><li><span class="sc-interp">Where options sit in the bigger picture</span></li></ul></div></div></div><div class="modrow "><button class="modq"><span class="modchev">›</span><span class="modn"><span class="sc-interp">Chapter 03</span></span><span class="modt"><span class="sc-interp">Read</span></span><span class="modtime"><span class="sc-interp">3 lessons</span></span><span class="modchev" style="visibility: hidden;"></span></button><div class="moda" style="max-height: 0px;"><div class="moda-in"><span class="sc-interp">How to read a company, a chart, and the market.</span><ul><li><span class="sc-interp">What is worth reading and what to ignore</span></li><li><span class="sc-interp">A simple weekly research routine</span></li></ul></div></div></div><div class="modrow "><button class="modq"><span class="modchev">›</span><span class="modn"><span class="sc-interp">Chapter 04</span></span><span class="modt"><span class="sc-interp">Picking the underlying</span></span><span class="modtime"><span class="sc-interp">4 lessons</span></span><span class="modchev" style="visibility: hidden;"></span></button><div class="moda" style="max-height: 0px;"><div class="moda-in"><span class="sc-interp">Choosing quality companies you'd be happy to own.</span><ul><li><span class="sc-interp">The quality checklist we actually use</span></li><li><span class="sc-interp">Why we only sell options on companies we like</span></li></ul></div></div></div><div class="modrow "><button class="modq"><span class="modchev">›</span><span class="modn"><span class="sc-interp">Chapter 05</span></span><span class="modt"><span class="sc-interp">Overview and Fundamental Analysis</span></span><span class="modtime"><span class="sc-interp">5 lessons</span></span><span class="modchev" style="visibility: hidden;"></span></button><div class="moda" style="max-height: 0px;"><div class="moda-in"><span class="sc-interp">Valuing a business in plain English.</span><ul><li><span class="sc-interp">Reading the numbers that matter</span></li><li><span class="sc-interp">Separating a good company from a good price</span></li></ul></div></div></div><div class="modrow "><button class="modq"><span class="modchev">›</span><span class="modn"><span class="sc-interp">Chapter 06</span></span><span class="modt"><span class="sc-interp">Technical Analysis</span></span><span class="modtime"><span class="sc-interp">4 lessons</span></span><span class="modchev" style="visibility: hidden;"></span></button><div class="moda" style="max-height: 0px;"><div class="moda-in"><span class="sc-interp">Timing and price levels, kept simple.</span><ul><li><span class="sc-interp">Support, resistance and trend, minus the mysticism</span></li><li><span class="sc-interp">Using levels to place smarter strikes</span></li></ul></div></div></div><div class="modrow "><button class="modq"><span class="modchev">›</span><span class="modn"><span class="sc-interp">Chapter 07</span></span><span class="modt"><span class="sc-interp">Derivatives</span></span><span class="modtime"><span class="sc-interp">3 lessons</span></span><span class="modchev" style="visibility: hidden;"></span></button><div class="moda" style="max-height: 0px;"><div class="moda-in"><span class="sc-interp">What derivatives are, and how to use them as tools.</span><ul><li><span class="sc-interp">Contracts, leverage and obligation</span></li><li><span class="sc-interp">How derivatives transfer risk for a price</span></li></ul></div></div></div><div class="modrow "><button class="modq"><span class="modchev">›</span><span class="modn"><span class="sc-interp">Chapter 08</span></span><span class="modt"><span class="sc-interp">Options</span></span><span class="modtime"><span class="sc-interp">6 lessons</span></span><span class="modchev" style="visibility: hidden;"></span></button><div class="moda" style="max-height: 0px;"><div class="moda-in"><span class="sc-interp">Options mechanics and the Greeks, in plain English.</span><ul><li><span class="sc-interp">Calls, puts, strikes and expiries without the jargon</span></li><li><span class="sc-interp">The four Greeks that actually matter for income</span></li></ul></div></div></div><div class="modrow "><button class="modq"><span class="modchev">›</span><span class="modn"><span class="sc-interp">Chapter 09</span></span><span class="modt"><span class="sc-interp">Options in action</span></span><span class="modtime"><span class="sc-interp">7 lessons</span></span><span class="modchev" style="visibility: hidden;"></span></button><div class="moda" style="max-height: 0px;"><div class="moda-in"><span class="sc-interp">Cash-secured puts and covered calls, live.</span><ul><li><span class="sc-interp">Getting paid to buy quality at prices you like</span></li><li><span class="sc-interp">The wheel: stacking puts and calls each month</span></li></ul></div></div></div><div class="modrow "><button class="modq"><span class="modchev">›</span><span class="modn"><span class="sc-interp">Chapter 10</span></span><span class="modt"><span class="sc-interp">Portfolio Construction</span></span><span class="modtime"><span class="sc-interp">5 lessons</span></span><span class="modchev" style="visibility: hidden;"></span></button><div class="moda" style="max-height: 0px;"><div class="moda-in"><span class="sc-interp">Building an income portfolio that fits together.</span><ul><li><span class="sc-interp">Diversifying without diluting your edge</span></li><li><span class="sc-interp">Balancing income, growth and cash</span></li></ul></div></div></div><div class="modrow "><button class="modq"><span class="modchev">›</span><span class="modn"><span class="sc-interp">Chapter 11</span></span><span class="modt"><span class="sc-interp">Execution</span></span><span class="modtime"><span class="sc-interp">4 lessons</span></span><span class="modchev" style="visibility: hidden;"></span></button><div class="moda" style="max-height: 0px;"><div class="moda-in"><span class="sc-interp">Placing trades: orders, fills, and pitfalls.</span><ul><li><span class="sc-interp">Limit orders and getting good fills</span></li><li><span class="sc-interp">Broker setup and platform basics</span></li></ul></div></div></div><div class="modrow "><button class="modq"><span class="modchev">›</span><span class="modn"><span class="sc-interp">Chapter 12</span></span><span class="modt"><span class="sc-interp">Putting it together</span></span><span class="modtime"><span class="sc-interp">4 lessons</span></span><span class="modchev" style="visibility: hidden;"></span></button><div class="moda" style="max-height: 0px;"><div class="moda-in"><span class="sc-interp">The full monthly routine, in under an hour a week.</span><ul><li><span class="sc-interp">The one-page monthly checklist</span></li><li><span class="sc-interp">When to act and when to do nothing</span></li></ul></div></div></div><div class="modrow "><button class="modq"><span class="modchev">›</span><span class="modn"><span class="sc-interp">Chapter 13</span></span><span class="modt"><span class="sc-interp">Accounting and tax</span></span><span class="modtime"><span class="sc-interp">3 lessons</span></span><span class="modchev" style="visibility: hidden;"></span></button><div class="moda" style="max-height: 0px;"><div class="moda-in"><span class="sc-interp">Clean records and the tax basics (Canada).</span><ul><li><span class="sc-interp">Tracking premium, assignment and gains</span></li><li><span class="sc-interp">Registered vs non-registered accounts</span></li></ul></div></div></div><div class="modrow "><button class="modq"><span class="modchev">›</span><span class="modn"><span class="sc-interp">Chapter 14</span></span><span class="modt"><span class="sc-interp">Some scenarios</span></span><span class="modtime"><span class="sc-interp">5 lessons</span></span><span class="modchev" style="visibility: hidden;"></span></button><div class="moda" style="max-height: 0px;"><div class="moda-in"><span class="sc-interp">Worked examples of winning and losing months.</span><ul><li><span class="sc-interp">Walk-throughs of real trade outcomes</span></li><li><span class="sc-interp">How process beats prediction</span></li></ul></div></div></div><div class="modrow "><button class="modq"><span class="modchev">›</span><span class="modn"><span class="sc-interp">Chapter 15</span></span><span class="modt"><span class="sc-interp">Portfolio, funding and real estate</span></span><span class="modtime"><span class="sc-interp">4 lessons</span></span><span class="modchev" style="visibility: hidden;"></span></button><div class="moda" style="max-height: 0px;"><div class="moda-in"><span class="sc-interp">Where options income fits with your other goals.</span><ul><li><span class="sc-interp">Funding the account responsibly</span></li><li><span class="sc-interp">Where income trading fits in your net worth</span></li></ul></div></div></div><div class="modrow "><button class="modq"><span class="modchev">›</span><span class="modn"><span class="sc-interp">Chapter 16</span></span><span class="modt"><span class="sc-interp">Entering the trade</span></span><span class="modtime"><span class="sc-interp">3 lessons</span></span><span class="modchev" style="visibility: hidden;"></span></button><div class="moda" style="max-height: 0px;"><div class="moda-in"><span class="sc-interp">The pre-trade checklist for every position.</span><ul><li><span class="sc-interp">The pre-trade checklist</span></li><li><span class="sc-interp">Defining risk before you enter</span></li></ul></div></div></div><div class="modrow "><button class="modq"><span class="modchev">›</span><span class="modn"><span class="sc-interp">Chapter 17</span></span><span class="modt"><span class="sc-interp">Executive Summary</span></span><span class="modtime"><span class="sc-interp">2 lessons</span></span><span class="modchev" style="visibility: hidden;"></span></button><div class="moda" style="max-height: 0px;"><div class="moda-in"><span class="sc-interp">The whole method as one simple mental model.</span><ul><li><span class="sc-interp">The method in one page</span></li><li><span class="sc-interp">Your repeatable monthly loop</span></li></ul></div></div></div><div class="modrow "><button class="modq"><span class="modchev">›</span><span class="modn"><span class="sc-interp">Chapter 18</span></span><span class="modt"><span class="sc-interp">What could go wrong?</span></span><span class="modtime"><span class="sc-interp">4 lessons</span></span><span class="modchev" style="visibility: hidden;"></span></button><div class="moda" style="max-height: 0px;"><div class="moda-in"><span class="sc-interp">Risks and drawdowns, with a plan for each.</span><ul><li><span class="sc-interp">Assignment, gaps and volatility spikes</span></li><li><span class="sc-interp">Rolling, repair and staying calm</span></li></ul></div></div></div><div class="modrow "><button class="modq"><span class="modchev">›</span><span class="modn"><span class="sc-interp">Chapter 19</span></span><span class="modt"><span class="sc-interp">Closing Comments</span></span><span class="modtime"><span class="sc-interp">2 lessons</span></span><span class="modchev" style="visibility: hidden;"></span></button><div class="moda" style="max-height: 0px;"><div class="moda-in"><span class="sc-interp">Mindset and discipline for the long game.</span><ul><li><span class="sc-interp">Habits that compound</span></li><li><span class="sc-interp">Avoiding the emotional traps</span></li></ul></div></div></div><div class="modrow "><button class="modq"><span class="modchev">›</span><span class="modn"><span class="sc-interp">Chapter 20</span></span><span class="modt"><span class="sc-interp">Thank you</span></span><span class="modtime"><span class="sc-interp">1 lesson</span></span><span class="modchev" style="visibility: hidden;"></span></button><div class="moda" style="max-height: 0px;"><div class="moda-in"><span class="sc-interp">Next steps: community, live reviews, lifetime access.</span><ul><li><span class="sc-interp">How to plug into the community</span></li><li><span class="sc-interp">What comes after the curriculum</span></li></ul></div></div></div></div></div><div class="blk"><div class="blk-h"><h3>What this is</h3></div><div class="desc"><p>The Masterclass is the complete Theta Trading method, the exact process our team uses to sell options for monthly income on high-quality companies. <b>No signals, no secret indicator, no hype.</b> You learn the mechanics, the math you actually need, and a routine you can run in under an hour a week.</p><p>Every strategy is taught with defined risk and real examples, including the losing months. You'll finish knowing exactly when, why, and how much, and you'll have a community and live reviews to keep you accountable.</p><p><b>Enroll once for lifetime access</b>, including every future update to the curriculum, tools, and templates.</p></div></div></div><aside class="pg-right" id="enroll"><div class="buy"><div class="bc-media"><img src="assets/hero-bg.jpg" alt="Inside the Theta Trading Masterclass"><div class="bc-scrim"></div><div class="bc-play">▶</div><div class="bc-plabel">Preview the program</div></div><div class="bc-in"><div class="plans"><button class="plan on"><span class="plan-radio"></span><div class="plan-main"><div class="plan-name">Annual<span class="plan-badge">Best value</span></div><div class="plan-sub">Billed once a year</div></div><div class="plan-price"><b>$1,997</b><span>/yr</span></div></button><button class="plan "><span class="plan-radio"></span><div class="plan-main"><div class="plan-name">3-Pay</div><div class="plan-sub">$747 billed 3 times</div></div><div class="plan-price"><b>$747</b><span>×3</span></div></button></div><div class="plan-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><span class="sc-interp">You save $244 vs the 3-payment plan</span></div><div class="bc-ctas"><button class="btn btn-w w100"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>Enroll now</button></div><p class="bc-note"><b>14-day money-back guarantee.</b> Cancel anytime, no questions asked.</p></div></div></aside></div></main><footer class="foot"><div class="wrap"><div class="foot-top"><div><img src="assets/theta-logo.png" alt="Theta Trading"><p class="blurb">Options income, taught as a skill, for self-directed investors who are done with hype.</p><div class="socials"><a class="soc" href="https://www.facebook.com/thetatrading/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5h2.2V5.4C15.8 5.3 14.9 5.2 13.9 5.2c-2.1 0-3.6 1.3-3.6 3.7v2H7.4v3.2h2.9V22h3.4v-7.9h2.7l.4-3.2h-3.1V9.2c0-.5.3-.7 1-.7Z"></path></svg></a><a class="soc" href="https://www.instagram.com/thetatrading/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"></circle></svg></a><a class="soc" href="https://www.youtube.com/@ThetaTrading/videos" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.5 8.2a2.7 2.7 0 0 0-1.9-1.9C18.9 5.8 12 5.8 12 5.8s-6.9 0-8.6.5A2.7 2.7 0 0 0 1.5 8.2C1 9.9 1 12 1 12s0 2.1.5 3.8a2.7 2.7 0 0 0 1.9 1.9c1.7.5 8.6.5 8.6.5s6.9 0 8.6-.5a2.7 2.7 0 0 0 1.9-1.9C23 14.1 23 12 23 12s0-2.1-.5-3.8ZM9.8 15.2V8.8l5.6 3.2-5.6 3.2Z"></path></svg></a><a class="soc" href="https://x.com/thetatrading3" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3.5h2.9l-6.4 7.3 7.5 9.7h-5.9l-4.6-6-5.3 6H2.8l6.8-7.8L2.4 3.5h6l4.2 5.5 4.9-5.5Zm-1 15.2h1.6L7.9 5.1H6.2l11.3 13.6Z"></path></svg></a><a class="soc" href="https://www.linkedin.com/company/thetatrading/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.1 8.7H2.9V21h3.2V8.7ZM4.5 3.2A1.9 1.9 0 1 0 4.5 7a1.9 1.9 0 0 0 0-3.8ZM21 13.9c0-3-1.6-4.4-3.7-4.4-1.7 0-2.5.9-2.9 1.6V8.7H11.2c0 .9 0 12.3 0 12.3h3.2v-6.9c0-.4 0-.7.1-1 .3-.7.9-1.4 1.9-1.4 1.3 0 1.9 1 1.9 2.6V21H21v-7.1Z"></path></svg></a></div></div><div><div class="fh">Learn</div><ul><li><a href="index.html#reframe">Our strategy</a></li><li><a href="index.html#masterclass">How it works</a></li><li><a href="index.html#pricing">Pricing</a></li></ul></div><div><div class="fh">Company</div><ul><li><a href="index.html#instructor">About</a></li><li><a href="index.html#reviews">Reviews</a></li><li class="foot-contact"><a href="mailto:info@thetatradingco.com">Contact</a><div class="contact-pop"><div class="cpop-label">Canada Office</div><div class="cpop-name">Theta Trading</div><div class="cpop-addr">533 Brant St Suite 201, Burlington, ON L7R 2G6</div><div class="cpop-q">Need help or have any questions?</div><a class="cpop-mail" href="mailto:info@thetatradingco.com">info@thetatradingco.com</a></div></li></ul></div><div><div class="fh">Legal</div><ul><li><a href="legal.html#terms">Terms of use</a></li><li><a href="legal.html#privacy">Privacy policy</a></li><li><a href="legal.html#risk">Risk disclosure</a></li></ul></div></div><p class="disclosure"><strong>Important risk disclosure.</strong> Theta Trading provides educational content only. Nothing on this site is investment, tax, or financial advice, an offer to buy or sell any security, or a recommendation to enter any trade. Options involve substantial risk and are not suitable for all investors; you can lose more than your initial investment. Any figures, examples, or results shown are illustrative or self-reported and are <strong>not guarantees or predictions of future performance.</strong> Past performance does not indicate future results. Consult a licensed financial professional before making investment decisions.</p><div class="foot-bot"><span>© 2026 Theta Trading. All rights reserved.</span><span class="mono">Built for self-directed investors.</span></div></div></footer></div></div></div>
+<script>
+(function(){
+'use strict';
+
+var nav=document.querySelector('.nav');
+function ns(){ if(nav) nav.classList.toggle('scrolled', window.scrollY>40); }
+window.addEventListener('scroll',ns,{passive:true}); ns();
+var burger=document.querySelector('.navburger'), mm=document.querySelector('.mobmenu'), mmx=document.querySelector('.mobmenu-x');
+function om(){ if(mm){ mm.classList.add('open'); document.body.style.overflow='hidden'; } }
+function cm(){ if(mm){ mm.classList.remove('open'); document.body.style.overflow=''; } }
+if(burger) burger.addEventListener('click',om);
+if(mmx) mmx.addEventListener('click',cm);
+document.querySelectorAll('.mobmenu-links a').forEach(function(a){ a.addEventListener('click',cm); });
+document.querySelectorAll('.qa .q').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var qa=btn.closest('.qa'), op=qa.classList.contains('open');
+    document.querySelectorAll('.qa').forEach(function(x){ x.classList.remove('open'); var a=x.querySelector('.a'); if(a) a.style.maxHeight='0px'; });
+    if(!op){ qa.classList.add('open'); var a=qa.querySelector('.a'); if(a) a.style.maxHeight=(a.scrollHeight+40)+'px'; }
+  });
+});
+
+/* ============ CHECKOUT CONFIG ============
+   Embedded Stripe Checkout. To activate:
+   1. Set STRIPE_PUBLISHABLE_KEY below (pk_test_... first, pk_live_... at launch) - from the CLIENT'S Stripe account.
+   2. Set STRIPE_SECRET_KEY + STRIPE_PRICE_FULL + STRIPE_PRICE_3PAY env vars in Netlify (see netlify/functions/create-checkout-session.js).
+   Until the key is set, the button falls back to FALLBACK_CHECKOUT_URL (the existing ClickFunnels checkout). */
+var STRIPE_PUBLISHABLE_KEY="pk_live_SL2SZDe9s95BAHOyTUTNYww300DmGkzAQv";
+var PAYLINK_FULL="https://buy.stripe.com/bJebJ2aapaDZe455it9sk05";
+var PAYLINK_3PAY="https://buy.stripe.com/cNi5kE3M1fYjf8912d9sk04";
+var FALLBACK_CHECKOUT_URL="https://registration.thetatradingco.com/checkout";
+
+/* ---- pricing-page video preview ("Preview the program") ---- */
+var JOIN_PREVIEW_VIDEO_URL="https://www.youtube.com/watch?v=iRxUsxREgbg"; /* set "" to disable */
+function bcEmbed(url){
+  var m=url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/);
+  if(m){ var f=document.createElement("iframe"); f.src="https://www.youtube.com/embed/"+m[1]+"?autoplay=1&rel=0&modestbranding=1"; f.setAttribute("allow","autoplay; fullscreen; picture-in-picture"); f.setAttribute("allowfullscreen",""); return f; }
+  if(/\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(url)){ var v=document.createElement("video"); v.src=url; v.controls=true; v.autoplay=true; v.playsInline=true; return v; }
+  var fr=document.createElement("iframe"); fr.src=url; fr.setAttribute("allow","autoplay; fullscreen"); fr.setAttribute("allowfullscreen",""); return fr;
+}
+var bcMedia=document.querySelector(".bc-media");
+if(bcMedia) bcMedia.addEventListener("click",function(){
+  if(!JOIN_PREVIEW_VIDEO_URL||bcMedia.querySelector(".bc-vid")) return;
+  var e=bcEmbed(JOIN_PREVIEW_VIDEO_URL); if(!e) return;
+  e.className="bc-vid";
+  e.style.cssText="position:absolute;inset:0;width:100%;height:100%;border:0;background:#000;object-fit:cover;z-index:3";
+  bcMedia.appendChild(e);
+});
+/* ---- program curriculum accordion (one chapter open at a time) ---- */
+(function(){
+  var rows=[].slice.call(document.querySelectorAll('.mods .modrow'));
+  if(!rows.length) return;
+  function setOpen(row, open){
+    var a=row.querySelector('.moda');
+    row.classList.toggle('open', open);
+    if(a) a.style.maxHeight = open ? (a.scrollHeight + 'px') : '0px';
+  }
+  rows.forEach(function(row){
+    setOpen(row, row.classList.contains('open'));   // normalize initial (Ch 01 open)
+    var btn=row.querySelector('.modq');
+    if(btn) btn.addEventListener('click', function(){
+      setOpen(row, !row.classList.contains('open'));     // independent toggle (any number open)
+    });
+  });
+  // keep an open drawer sized correctly on resize
+  window.addEventListener('resize', function(){
+    var open=document.querySelector('.mods .modrow.open'); if(open) setOpen(open, true);
+  }, {passive:true});
+})();
+var planBtns=[].slice.call(document.querySelectorAll('.plan'));
+planBtns.forEach(function(b){ b.addEventListener('click',function(){ planBtns.forEach(function(x){ x.classList.remove('on'); }); b.classList.add('on'); }); });
+function selPlanKey(){ var b=document.querySelector('.plan.on')||planBtns[0]; var t=(b&&b.textContent)||''; return /747|3\s*times|3-?pay|×3/i.test(t)?'3pay':'full'; }
+
+var checkoutInstance=null;
+function closeCheckout(){ var m=document.getElementById('co-modal'); if(m) m.remove(); if(checkoutInstance){ try{checkoutInstance.destroy();}catch(e){} checkoutInstance=null; } document.body.style.overflow=''; }
+function openCheckout(){
+  var plan=selPlanKey();
+  if(!STRIPE_PUBLISHABLE_KEY){
+    var link=plan==='3pay'?PAYLINK_3PAY:PAYLINK_FULL;
+    window.location.href=link||FALLBACK_CHECKOUT_URL; return;
+  }
+  var m=document.createElement('div'); m.id='co-modal';
+  m.style.cssText='position:fixed;inset:0;z-index:300;background:rgba(4,6,10,.82);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:18px;overflow:auto';
+  var box=document.createElement('div');
+  box.style.cssText='position:relative;width:min(480px,96vw);max-height:92vh;overflow:auto;background:#fff;border-radius:16px;padding:10px';
+  var x=document.createElement('button'); x.textContent='\u2715'; x.setAttribute('aria-label','Close');
+  x.style.cssText='position:absolute;top:10px;right:10px;z-index:2;width:34px;height:34px;border-radius:50%;border:1px solid #ddd;background:#fff;color:#333;font-size:14px;cursor:pointer';
+  x.addEventListener('click',closeCheckout);
+  var mount=document.createElement('div'); mount.id='co-mount'; mount.style.minHeight='420px';
+  mount.innerHTML='<div style="padding:60px 0;text-align:center;color:#666;font-size:14px">Loading secure checkout\u2026</div>';
+  box.appendChild(x); box.appendChild(mount); m.appendChild(box); document.body.appendChild(m);
+  m.addEventListener('click',function(e){ if(e.target===m) closeCheckout(); });
+  document.body.style.overflow='hidden';
+  function boot(){
+    fetch('/.netlify/functions/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({plan:plan})})
+      .then(function(r){ if(!r.ok) throw new Error('fn'); return r.json(); })
+      .then(function(d){ if(!d.clientSecret) throw new Error('cs');
+        var stripe=Stripe(STRIPE_PUBLISHABLE_KEY);
+        return stripe.initEmbeddedCheckout({clientSecret:d.clientSecret}).then(function(co){ checkoutInstance=co; mount.innerHTML=''; co.mount('#co-mount'); });
+      })
+      .catch(function(){ closeCheckout(); if(FALLBACK_CHECKOUT_URL) window.location.href=FALLBACK_CHECKOUT_URL; });
+  }
+  if(window.Stripe){ boot(); }
+  else { var s=document.createElement('script'); s.src='https://js.stripe.com/v3/'; s.onload=boot;
+    s.onerror=function(){ closeCheckout(); if(FALLBACK_CHECKOUT_URL) window.location.href=FALLBACK_CHECKOUT_URL; };
+    document.head.appendChild(s); }
+}
+[].slice.call(document.querySelectorAll('button,a')).forEach(function(b){
+  if(!/enroll now/i.test((b.textContent||'').trim())) return;
+  if(/#enroll/.test(b.getAttribute('href')||'')) return;
+  b.addEventListener('click',function(e){ e.preventDefault(); openCheckout(); });
+});
+
+})();
+</script>
+</body>
+</html>
