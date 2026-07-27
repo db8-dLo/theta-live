@@ -13,3 +13,7 @@ node_modules/
 
 # Logs
 *.log
+
+# Editor/session scratch
+.claude/
+_to_delete/

@@ -1,12 +1,17 @@
-// Creates a Stripe Embedded Checkout session for the join page.
+// Creates a Stripe Embedded Checkout session (used by join.html and membership.html).
 //
-// Required environment variables (Netlify dashboard -> Site settings -> Environment variables):
-//   STRIPE_SECRET_KEY   - secret key from the CLIENT'S Stripe account (sk_test_... first, sk_live_... at launch)
-//   STRIPE_PRICE_FULL   - Price ID for the one-time $1,997 payment (price_...)
-//   STRIPE_PRICE_3PAY   - Price ID for the $747/month subscription used as the 3-pay plan (price_...)
+// Required environment variables (Netlify -> Site settings -> Environment variables):
+//   STRIPE_SECRET_KEY                 - secret key from the CLIENT'S Stripe account (sk_test_... first, sk_live_... at launch)
+//   Masterclass (join.html):
+//     STRIPE_PRICE_FULL               - one-time $1,997 payment (price_...)
+//     STRIPE_PRICE_3PAY               - $747/month subscription used as the 3-pay plan (price_...)
+//   Membership (membership.html):
+//     STRIPE_PRICE_MEMBERSHIP_MONTHLY - $150/month subscription (price_...)
+//     STRIPE_PRICE_MEMBERSHIP_ANNUAL  - $1,500/year subscription (price_...)
 //
+// The membership plans start with a 7-day free trial (card collected up front).
 // The 3-pay plan checks out as a subscription; a follow-up automation must stop it
-// after the 3rd payment (subscription schedule or Zap) — see project log, Phase 2 notes.
+// after the 3rd payment — see project log, Phase 2 notes.
 
 exports.handler = async function (event) {
   if (event.httpMethod !== "POST") {
@@ -16,25 +21,39 @@ exports.handler = async function (event) {
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) return { statusCode: 500, body: JSON.stringify({ error: "Stripe not configured" }) };
 
-  let plan = "full";
-  try { plan = (JSON.parse(event.body || "{}").plan === "3pay") ? "3pay" : "full"; } catch (e) {}
+  // Plan catalog. Each entry names the env var holding its price, the checkout mode,
+  // an optional free-trial length (days), and a source tag for reporting.
+  const PLANS = {
+    full:    { priceEnv: "STRIPE_PRICE_FULL",               mode: "payment",      source: "theta-website-join" },
+    "3pay":  { priceEnv: "STRIPE_PRICE_3PAY",               mode: "subscription", source: "theta-website-join" },
+    monthly: { priceEnv: "STRIPE_PRICE_MEMBERSHIP_MONTHLY", mode: "subscription", trialDays: 7, source: "theta-website-membership" },
+    annual:  { priceEnv: "STRIPE_PRICE_MEMBERSHIP_ANNUAL",  mode: "subscription", trialDays: 7, source: "theta-website-membership" },
+  };
 
-  const price = plan === "3pay" ? process.env.STRIPE_PRICE_3PAY : process.env.STRIPE_PRICE_FULL;
+  let requested = "full";
+  try { requested = JSON.parse(event.body || "{}").plan || "full"; } catch (e) {}
+  const plan = PLANS[requested] ? requested : "full";
+  const cfg = PLANS[plan];
+
+  const price = process.env[cfg.priceEnv];
   if (!price) return { statusCode: 500, body: JSON.stringify({ error: "Price not configured" }) };
 
   const origin = (event.headers && (event.headers.origin || ("https://" + event.headers.host))) || "";
 
   const params = new URLSearchParams();
   params.append("ui_mode", "embedded");
-  params.append("mode", plan === "3pay" ? "subscription" : "payment");
+  params.append("mode", cfg.mode);
   params.append("line_items[0][price]", price);
   params.append("line_items[0][quantity]", "1");
   params.append("return_url", origin + "/thank-you.html?session_id={CHECKOUT_SESSION_ID}");
   params.append("metadata[plan]", plan);
-  params.append("metadata[source]", "theta-website-join");
-  if (plan === "3pay") {
-    params.append("subscription_data[metadata][plan]", "3pay");
-    params.append("subscription_data[metadata][source]", "theta-website-join");
+  params.append("metadata[source]", cfg.source);
+  if (cfg.mode === "subscription") {
+    params.append("subscription_data[metadata][plan]", plan);
+    params.append("subscription_data[metadata][source]", cfg.source);
+    if (cfg.trialDays) {
+      params.append("subscription_data[trial_period_days]", String(cfg.trialDays));
+    }
   }
   // Uncomment once Stripe Tax is enabled on the account (CF checkout charges +tax today):
   // params.append("automatic_tax[enabled]", "true");

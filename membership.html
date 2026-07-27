@@ -188,14 +188,65 @@
     p.addEventListener("click", function () { billing = p.getAttribute("data-bill"); render(); });
   });
 
-  // Stripe Payment Links (TEST mode). Swap these two for the LIVE links at launch.
+  /* ============ CHECKOUT ============
+     Embedded Stripe Checkout — opens in a modal on THIS page (no redirect off-site).
+     To turn the embed on:
+       1. Set STRIPE_PUBLISHABLE_KEY below (pk_test_... for staging, pk_live_... at launch) — from the CLIENT'S Stripe account.
+       2. In Netlify, set STRIPE_SECRET_KEY + STRIPE_PRICE_MEMBERSHIP_MONTHLY + STRIPE_PRICE_MEMBERSHIP_ANNUAL
+          (see netlify/functions/create-checkout-session.js).
+     Until the publishable key is set — or if the function ever fails — the button safely
+     falls back to the hosted Stripe Payment Link (today's behavior). */
+  var STRIPE_PUBLISHABLE_KEY = "pk_test_SqUlT5Exylbiw1VNKsdTdr6v00lBoqaTjh";  // TEST key — swap for pk_live_... at launch
   var PAYMENT_LINKS = {
-    monthly: "https://buy.stripe.com/test_00w3cwbetbI32lnbGR9sk02",
-    annual:  "https://buy.stripe.com/test_eVqaEY4Q53bxgcd9yJ9sk03"
+    monthly: "https://buy.stripe.com/test_00w3cwbetbI32lnbGR9sk02",  // swap for the LIVE link at launch
+    annual:  "https://buy.stripe.com/test_eVqaEY4Q53bxgcd9yJ9sk03"   // swap for the LIVE link at launch
   };
-  document.getElementById("cta").addEventListener("click", function () {
-    window.location.href = PAYMENT_LINKS[billing];
-  });
+
+  var checkoutInstance = null;
+  function closeCheckout() {
+    var m = document.getElementById("co-modal"); if (m) m.remove();
+    if (checkoutInstance) { try { checkoutInstance.destroy(); } catch (e) {} checkoutInstance = null; }
+    document.body.style.overflow = "";
+  }
+  function openCheckout() {
+    // No publishable key yet → keep today's behavior (redirect to the hosted payment link).
+    if (!STRIPE_PUBLISHABLE_KEY) { window.location.href = PAYMENT_LINKS[billing]; return; }
+
+    var m = document.createElement("div"); m.id = "co-modal";
+    m.style.cssText = "position:fixed;inset:0;z-index:300;background:rgba(4,6,10,.82);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:18px;overflow:auto";
+    var box = document.createElement("div");
+    box.style.cssText = "position:relative;width:min(480px,96vw);max-height:92vh;overflow:auto;background:#fff;border-radius:16px;padding:10px";
+    var x = document.createElement("button"); x.textContent = "✕"; x.setAttribute("aria-label", "Close");
+    x.style.cssText = "position:absolute;top:10px;right:10px;z-index:2;width:34px;height:34px;border-radius:50%;border:1px solid #ddd;background:#fff;color:#333;font-size:14px;cursor:pointer";
+    x.addEventListener("click", closeCheckout);
+    var mount = document.createElement("div"); mount.id = "co-mount"; mount.style.minHeight = "420px";
+    mount.innerHTML = '<div style="padding:60px 0;text-align:center;color:#666;font-size:14px">Loading secure checkout…</div>';
+    box.appendChild(x); box.appendChild(mount); m.appendChild(box); document.body.appendChild(m);
+    m.addEventListener("click", function (e) { if (e.target === m) closeCheckout(); });
+    document.body.style.overflow = "hidden";
+
+    function boot() {
+      fetch("/.netlify/functions/create-checkout-session", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ plan: billing })   // billing is "annual" or "monthly"
+      })
+        .then(function (r) { if (!r.ok) throw new Error("fn"); return r.json(); })
+        .then(function (d) { if (!d.clientSecret) throw new Error("cs");
+          var stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+          return stripe.initEmbeddedCheckout({ clientSecret: d.clientSecret }).then(function (co) {
+            checkoutInstance = co; mount.innerHTML = ""; co.mount("#co-mount");
+          });
+        })
+        .catch(function () { closeCheckout(); window.location.href = PAYMENT_LINKS[billing]; });
+    }
+    if (window.Stripe) { boot(); }
+    else {
+      var s = document.createElement("script"); s.src = "https://js.stripe.com/v3/"; s.onload = boot;
+      s.onerror = function () { closeCheckout(); window.location.href = PAYMENT_LINKS[billing]; };
+      document.head.appendChild(s);
+    }
+  }
+  document.getElementById("cta").addEventListener("click", openCheckout);
 
   render();
 </script>
