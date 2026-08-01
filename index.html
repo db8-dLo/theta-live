@@ -665,6 +665,60 @@ body{overflow-x:clip}
 .blurb{max-width:40ch}
 }
 .skip-link{position:absolute;left:-9999px;top:0;z-index:2000;background:var(--acc);color:var(--acc-ink);padding:10px 16px;border-radius:8px;font-weight:700}.skip-link:focus{left:12px;top:12px}
+.icpop-modal{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(4,6,10,.82);backdrop-filter:blur(8px);animation:icpfade .2s ease}
+.icpop-modal[hidden]{display:none}
+@keyframes icpfade{from{opacity:0}to{opacity:1}}
+.icpop-box{position:relative;width:min(480px,94vw);max-height:92vh;overflow-y:auto;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,var(--panel2),var(--panel));box-shadow:0 40px 120px -30px rgba(0,0,0,.9)}
+.icpop-close{position:absolute;top:12px;right:12px;z-index:3;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:rgba(10,12,17,.7);color:var(--tx);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .15s,color .15s}
+.icpop-close:hover{border-color:var(--acc);color:var(--acc)}
+.icpop-body{padding:clamp(26px,4vw,34px)}
+.icpop-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin-bottom:16px}
+.icpop-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--acc);box-shadow:0 0 10px var(--acc)}
+.icpop-q{margin-bottom:24px}
+.icpop-q-label{font-size:16px;font-weight:700;letter-spacing:-.01em;margin-bottom:12px;display:block}
+.icpop-amount{position:relative;display:flex;align-items:center}
+.icpop-amount .pre{position:absolute;left:16px;font-family:var(--f-mono);font-size:20px;color:var(--mut);pointer-events:none}
+.icpop-amount input{width:100%;font-family:var(--f-mono);font-size:24px;font-weight:600;color:var(--tx);background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:15px 16px 15px 34px;letter-spacing:-.01em;transition:border-color .15s,box-shadow .15s}
+.icpop-amount input:focus{outline:0;border-color:var(--acc);box-shadow:0 0 0 3px rgba(0,174,239,.15)}
+.icpop-q input[type="range"]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:4px;background:var(--line);margin-top:16px;cursor:pointer}
+.icpop-q input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:var(--acc);border:3px solid #0b0e14;box-shadow:0 0 0 1px var(--acc),0 4px 12px -2px rgba(0,174,239,.6);cursor:pointer}
+.icpop-q input[type="range"]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--acc);border:3px solid #0b0e14;box-shadow:0 0 0 1px var(--acc);cursor:pointer}
+.icpop-seg{display:flex;gap:4px;background:var(--bg2);border:1px solid var(--line);border-radius:13px;padding:4px}
+.icpop-seg button{flex:1;font-family:var(--f-body);font-weight:600;font-size:13.5px;color:var(--mut);background:transparent;border:0;border-radius:9px;padding:11px 8px;cursor:pointer;transition:color .18s,background .18s,box-shadow .18s;white-space:nowrap}
+.icpop-seg button:hover{color:var(--tx)}
+.icpop-seg button[aria-selected="true"]{background:var(--panel2);color:var(--tx);box-shadow:0 2px 8px -3px rgba(0,0,0,.6),inset 0 0 0 1px var(--line)}
+.icpop-seg-desc{margin-top:10px;font-size:12.5px;color:var(--mut2);line-height:1.5;min-height:18px;text-align:center}
+.icpop-result{position:relative;margin-top:4px;background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:26px 22px;text-align:center;overflow:hidden}
+.icpop-r-big{font-family:var(--f-mono);font-size:clamp(46px,12vw,58px);font-weight:600;letter-spacing:-.02em;line-height:1;color:var(--pos);margin:8px 0 4px;display:flex;align-items:baseline;justify-content:center;gap:4px}
+.icpop-r-big .mo{font-size:16px;color:var(--mut);font-weight:500}
+.icpop-r-annual{font-family:var(--f-mono);font-size:13px;color:var(--mut)}
+.icpop-r-flag{display:inline-block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut2);border:1px solid var(--line);border-radius:5px;padding:3px 8px;margin-top:16px}
+.icpop-result:not(.gated) .icpop-r-proof{display:none}
+.icpop-r-proof{margin-top:16px;padding:14px 15px;background:rgba(255,255,255,.02);border:1px solid var(--line2);border-radius:12px;text-align:left}
+.icpop-r-proof .stars{color:#F6B01E;font-size:12px;letter-spacing:2px;margin-bottom:8px}
+.icpop-r-proof .quote{font-size:13px;line-height:1.5;color:var(--tx);opacity:.92;margin-bottom:11px}
+.icpop-r-proof .who{display:flex;align-items:center;gap:9px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.03em;color:var(--mut2)}
+.icpop-r-proof .who .av{width:23px;height:23px;border-radius:50%;background:rgb(14,124,134);color:#fff;font-family:var(--f-body);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.icpop-result.gated .icpop-r-big{filter:blur(12px);opacity:.8;user-select:none;pointer-events:none}
+.icpop-result .icpop-r-detail{display:none}
+.icpop-result:not(.gated) .icpop-r-capture{display:none}
+.icpop-result:not(.gated) .icpop-r-detail{display:block}
+.icpop-r-capture{margin-top:18px;padding-top:18px;border-top:1px solid var(--line2)}
+.icpop-r-cap-line{font-family:var(--f-body);font-size:16px;font-weight:700;letter-spacing:-.01em;margin-bottom:12px}
+.icpop-g-form{display:flex;flex-direction:column;gap:9px}
+.icpop-g-input{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;color:var(--tx);padding:13px 14px;font-size:15px;font-family:var(--f-body);outline:none;text-align:center;transition:border-color .15s}
+.icpop-g-input:focus{border-color:var(--acc)}
+.icpop-g-input.err{border-color:var(--neg)}
+.icpop-g-btn{width:100%;background:var(--acc);color:var(--acc-ink);border:0;border-radius:10px;padding:14px;font-size:15px;font-weight:700;font-family:var(--f-body);cursor:pointer;box-shadow:0 10px 30px -10px rgba(0,174,239,.6);transition:filter .15s}
+.icpop-g-btn:hover{filter:brightness(1.06)}
+.icpop-g-btn[disabled]{opacity:.6;cursor:default}
+.icpop-g-msg{font-family:var(--f-mono);font-size:11px;min-height:13px;margin-top:8px;color:var(--mut2)}
+.icpop-g-msg.err{color:var(--neg)}
+.icpop-g-fine{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.02em;color:var(--mut2);margin-top:10px}
+@keyframes icppop{0%{transform:scale(.96);opacity:.5}100%{transform:scale(1);opacity:1}}
+.icpop-result.revealed .icpop-r-big{animation:icppop .5s cubic-bezier(.2,.8,.2,1)}
+.icpop-disclaimer{padding:14px clamp(26px,4vw,34px);background:var(--bg);border-top:1px solid var(--line);font-family:var(--f-mono);font-size:10.5px;line-height:1.5;color:var(--mut2)}
+@media (max-width:480px){.icpop-modal{padding:0}.icpop-box{width:100%;max-width:100%;max-height:100%;height:100%;border-radius:0}}
   </style>
 </head>
 <body>
@@ -809,6 +863,196 @@ function openModal(name,role,poster,url){
   }
   window.addEventListener('scroll', function onSc(){ if(done){ window.removeEventListener('scroll',onSc); return; } if(inView()){ window.removeEventListener('scroll',onSc); run(); } }, {passive:true});
   if(inView()) run();
+})();
+</script>
+<div class="icpop-modal" id="icpopModal" hidden>
+  <div class="icpop-box" role="dialog" aria-modal="true" aria-label="Income calculator">
+    <button class="icpop-close" id="icpopClose" type="button" aria-label="Close">✕</button>
+    <div class="icpop-body">
+      <p class="icpop-eyebrow"><span class="dot"></span> Free income calculator</p>
+      <div class="icpop-q">
+        <label class="icpop-q-label" for="icpopAmt">How much do you have invested?</label>
+        <div class="icpop-amount">
+          <span class="pre">$</span>
+          <input id="icpopAmt" type="text" inputmode="numeric" value="25,000" aria-label="Amount invested">
+        </div>
+        <input id="icpopAmtRange" type="range" min="5000" max="100000" step="1000" value="25000" aria-label="Amount slider">
+      </div>
+      <div class="icpop-q">
+        <label class="icpop-q-label">How do you want to play it?</label>
+        <div class="icpop-seg" role="tablist" aria-label="Approach">
+          <button role="tab" data-style="cons" aria-selected="false">Conservative</button>
+          <button role="tab" data-style="bal" aria-selected="true">Balanced</button>
+          <button role="tab" data-style="high" aria-selected="false">Higher income</button>
+        </div>
+        <p class="icpop-seg-desc" id="icpopSegDesc"></p>
+      </div>
+      <div class="icpop-result gated" id="icpopResult">
+        <div class="icpop-r-big"><span id="icpopPerMonth">$0</span><span class="mo">/mo</span></div>
+        <div class="icpop-r-proof">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"Theta has given me the knowledge and confidence to manage my own investments, with great results, through the most turbulent trading conditions."</p>
+          <div class="who"><span class="av">AD</span> Adam Downes · Google review</div>
+        </div>
+        <div class="icpop-r-capture">
+          <p class="icpop-r-cap-line">See what you could be earning</p>
+          <form class="icpop-g-form" id="icpopGateForm" novalidate>
+            <input class="icpop-g-input" id="icpopGateEmail" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" aria-label="Email address">
+            <button class="icpop-g-btn" id="icpopGateBtn" type="submit">Reveal my number &rarr;</button>
+          </form>
+          <div class="icpop-g-msg" id="icpopGateMsg" aria-live="polite"></div>
+          <p class="icpop-g-fine">Illustrative figures, not projected returns</p>
+        </div>
+        <div class="icpop-r-detail">
+          <div class="icpop-r-annual" id="icpopPerYear">≈ $0 a year</div>
+          <div class="icpop-r-flag">Illustrative · not projected returns</div>
+        </div>
+      </div>
+    </div>
+    <div class="icpop-disclaimer">Illustrative and educational only. Figures are examples based on typical options-income ranges, not a quote, prediction, or promise. Real results vary and can include loss.</div>
+  </div>
+</div>
+<script>
+(function(){
+  var KLAVIYO_PUBLIC_KEY = "W6eZQX";
+  var KLAVIYO_LIST_ID    = "QQmkkb";
+  var KLAVIYO_REVISION   = "2026-04-15";
+  var RATES = { cons: 0.007, bal: 0.011, high: 0.016 };
+  var DESC = {
+    cons: "Steadier, lower income from calmer, blue-chip names.",
+    bal:  "A middle path to a solid monthly income without chasing it.",
+    high: "More income, with more ups and downs along the way."
+  };
+
+  var modal = document.getElementById('icpopModal');
+  if(!modal) return;
+  var amt = document.getElementById('icpopAmt');
+  var amtRange = document.getElementById('icpopAmtRange');
+  var segDesc = document.getElementById('icpopSegDesc');
+  var perMonth = document.getElementById('icpopPerMonth');
+  var perYear = document.getElementById('icpopPerYear');
+  var resultEl = document.getElementById('icpopResult');
+  var gateForm = document.getElementById('icpopGateForm');
+  var gateEmail = document.getElementById('icpopGateEmail');
+  var gateBtn = document.getElementById('icpopGateBtn');
+  var gateMsg = document.getElementById('icpopGateMsg');
+
+  var style = 'bal';
+  var lastMonthly = 0;
+
+  var fmt = function(n){ return n.toLocaleString('en-US'); };
+  var digits = function(s){ return parseInt(String(s).replace(/[^\d]/g,''),10) || 0; };
+  var money = function(n){ return '$' + Math.round(n).toLocaleString('en-US'); };
+
+  var animTarget = 0, animCur = 0, animRAF = null;
+  function animate(to){
+    animTarget = to;
+    if (animRAF) return;
+    (function tick(){
+      var diff = animTarget - animCur;
+      if (Math.abs(diff) < 0.5) { animCur = animTarget; perMonth.textContent = money(animCur); animRAF = null; return; }
+      animCur += diff * 0.18;
+      perMonth.textContent = money(animCur);
+      animRAF = requestAnimationFrame(tick);
+    })();
+  }
+
+  function calc(animateIt){
+    var amount = digits(amt.value);
+    var monthly = amount * RATES[style];
+    lastMonthly = monthly;
+    perYear.textContent = '≈ ' + money(monthly * 12) + ' a year';
+    if (animateIt) { animCur = 0; animate(monthly); }
+    else { animCur = monthly; perMonth.textContent = money(monthly); }
+  }
+
+  amt.addEventListener('input', function(){
+    var n = digits(amt.value);
+    amt.value = n ? fmt(n) : '';
+    if (n >= +amtRange.min && n <= +amtRange.max) amtRange.value = n;
+    calc(false);
+  });
+  amtRange.addEventListener('input', function(){ amt.value = fmt(+amtRange.value); calc(false); });
+
+  modal.querySelectorAll('[data-style]').forEach(function(b){
+    b.addEventListener('click', function(){
+      style = b.getAttribute('data-style');
+      modal.querySelectorAll('[data-style]').forEach(function(x){ x.setAttribute('aria-selected', x === b ? 'true' : 'false'); });
+      segDesc.textContent = DESC[style];
+      calc(false);
+    });
+  });
+
+  function subscribe(email, approach, monthlyEst){
+    return fetch('https://a.klaviyo.com/client/subscriptions/?company_id=' + encodeURIComponent(KLAVIYO_PUBLIC_KEY), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/vnd.api+json', 'revision': KLAVIYO_REVISION },
+      body: JSON.stringify({ data: { type: 'subscription',
+        attributes: { custom_source: 'Homepage Popup Calculator',
+          profile: { data: { type: 'profile', attributes: {
+            email: email,
+            subscriptions: { email: { marketing: { consent: 'SUBSCRIBED' } } },
+            properties: { calculator_amount: digits(amt.value), calculator_approach: approach, calculator_monthly_estimate: monthlyEst }
+          } } } },
+        relationships: { list: { data: { type: 'list', id: KLAVIYO_LIST_ID } } } } })
+    }).then(function(res){ return res.status === 202 || res.ok; });
+  }
+
+  var validEmail = function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); };
+  gateForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    gateMsg.textContent = ''; gateMsg.classList.remove('err'); gateEmail.classList.remove('err');
+    var addr = gateEmail.value.trim();
+    if (!validEmail(addr)) { gateMsg.textContent = 'Please enter a valid email address.'; gateMsg.classList.add('err'); gateEmail.classList.add('err'); return; }
+    gateBtn.disabled = true; gateBtn.textContent = 'Revealing…';
+    subscribe(addr, style, Math.round(lastMonthly)).then(function(ok){
+      if (!ok) throw new Error('subscribe failed');
+      resultEl.classList.remove('gated');
+      resultEl.classList.add('revealed');
+      calc(true);
+    }).catch(function(err){
+      console.error('[Theta popup calc]', err);
+      gateMsg.textContent = 'Something went wrong — please try again.'; gateMsg.classList.add('err');
+      gateBtn.disabled = false; gateBtn.innerHTML = 'Reveal my number &rarr;';
+    });
+  });
+
+  segDesc.textContent = DESC[style];
+  calc(false);
+
+  function icpopHide(){
+    modal.hidden = true;
+    document.removeEventListener('keydown', icpopEsc);
+  }
+  function icpopEsc(e){ if (e.key === 'Escape') icpopHide(); }
+  function icpopShow(){
+    modal.hidden = false;
+    document.addEventListener('keydown', icpopEsc);
+  }
+  document.getElementById('icpopClose').addEventListener('click', icpopHide);
+  modal.addEventListener('click', function(e){ if (e.target === modal) icpopHide(); });
+
+  try {
+    if (!sessionStorage.getItem('icpopShown')) {
+      var triggered = false;
+      var timer = setTimeout(fire, 25000);
+      function fire(){
+        if (triggered) return;
+        triggered = true;
+        sessionStorage.setItem('icpopShown', '1');
+        clearTimeout(timer);
+        window.removeEventListener('scroll', onScroll);
+        icpopShow();
+      }
+      function onScroll(){
+        var doc = document.documentElement;
+        var max = doc.scrollHeight - doc.clientHeight;
+        if (max <= 0) return;
+        if ((window.scrollY || doc.scrollTop) / max >= 0.5) fire();
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+  } catch(e) { /* sessionStorage unavailable (private mode etc) — skip auto-trigger */ }
 })();
 </script>
 </body>
