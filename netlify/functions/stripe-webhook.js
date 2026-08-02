@@ -110,7 +110,7 @@ async function klaviyoEvent(email, metricName, properties, uniqueId) {
   };
   if (uniqueId) attributes.unique_id = uniqueId;
   try {
-    await fetch("https://a.klaviyo.com/api/events/", {
+    const r = await fetch("https://a.klaviyo.com/api/events/", {
       method: "POST",
       headers: {
         "Authorization": "Klaviyo-API-Key " + key,
@@ -119,6 +119,7 @@ async function klaviyoEvent(email, metricName, properties, uniqueId) {
       },
       body: JSON.stringify({ data: { type: "event", attributes } }),
     });
+    if (!r.ok) console.error("Klaviyo event rejected:", metricName, r.status, await r.text());
   } catch (e) { console.error("Klaviyo event failed:", metricName, e); }
 }
 
@@ -127,7 +128,7 @@ async function klaviyoAddToList(email, listId) {
   const key = process.env.KLAVIYO_PRIVATE_KEY;
   if (!key || !email || !listId) return;
   try {
-    await fetch("https://a.klaviyo.com/api/profile-subscription-bulk-create-jobs/", {
+    const r = await fetch("https://a.klaviyo.com/api/profile-subscription-bulk-create-jobs/", {
       method: "POST",
       headers: {
         "Authorization": "Klaviyo-API-Key " + key,
@@ -147,6 +148,7 @@ async function klaviyoAddToList(email, listId) {
         },
       }),
     });
+    if (!r.ok) console.error("Klaviyo list-add rejected:", listId, r.status, await r.text());
   } catch (e) { console.error("Klaviyo list-add failed:", listId, e); }
 }
 
@@ -162,7 +164,8 @@ async function thinkificEnroll(email, fullName) {
   try {
     const r = await fetch("https://api.thinkific.com/api/public/v1/users?query[email]=" + encodeURIComponent(email), { headers });
     const d = await r.json();
-    if (d && d.items && d.items.length) userId = d.items[0].id;
+    if (!r.ok) console.error("Thinkific user lookup rejected:", r.status, JSON.stringify(d));
+    else if (d && d.items && d.items.length) userId = d.items[0].id;
   } catch (e) { console.error("Thinkific user lookup failed:", e); }
 
   // create if missing (empty password -> Thinkific sends an Express Sign-In link)
@@ -174,7 +177,8 @@ async function thinkificEnroll(email, fullName) {
         body: JSON.stringify({ email: email, first_name: first, last_name: last }),
       });
       const d = await r.json();
-      userId = d && d.id;
+      if (!r.ok) console.error("Thinkific user create rejected:", r.status, JSON.stringify(d));
+      else userId = d && d.id;
     } catch (e) { console.error("Thinkific user create failed:", e); }
   }
   if (!userId) { console.error("No Thinkific user id for", email); return; }
@@ -182,10 +186,11 @@ async function thinkificEnroll(email, fullName) {
   // enroll in each course (re-enrolling an existing user is harmless)
   for (const cid of courseIds) {
     try {
-      await fetch("https://api.thinkific.com/api/public/v1/enrollments", {
+      const r = await fetch("https://api.thinkific.com/api/public/v1/enrollments", {
         method: "POST", headers,
         body: JSON.stringify({ course_id: Number(cid), user_id: userId, activated_at: new Date().toISOString() }),
       });
+      if (!r.ok) console.error("Thinkific enroll rejected for course", cid, r.status, await r.text());
     } catch (e) { console.error("Thinkific enroll failed for course", cid, e); }
   }
 }
