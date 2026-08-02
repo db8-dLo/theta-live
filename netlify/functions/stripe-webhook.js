@@ -36,6 +36,7 @@
 
 const crypto = require("crypto");
 const KLAVIYO_REVISION = process.env.KLAVIYO_REVISION || "2024-10-15";
+const KLAVIYO_LIST_FREE_TRIAL = "SPeeCa"; // "Free Trial Leads" list
 
 // ---- Stripe signature verification (no SDK, matches the no-dependency setup) ----
 function verifyStripe(rawBody, sigHeader, secret) {
@@ -121,6 +122,34 @@ async function klaviyoEvent(email, metricName, properties, uniqueId) {
   } catch (e) { console.error("Klaviyo event failed:", metricName, e); }
 }
 
+// ---- Klaviyo list subscribe (adds the profile to a list, e.g. "Free Trial Leads") ----
+async function klaviyoAddToList(email, listId) {
+  const key = process.env.KLAVIYO_PRIVATE_KEY;
+  if (!key || !email || !listId) return;
+  try {
+    await fetch("https://a.klaviyo.com/api/profile-subscription-bulk-create-jobs/", {
+      method: "POST",
+      headers: {
+        "Authorization": "Klaviyo-API-Key " + key,
+        "revision": KLAVIYO_REVISION,
+        "Content-Type": "application/vnd.api+json",
+      },
+      body: JSON.stringify({
+        data: {
+          type: "profile-subscription-bulk-create-job",
+          attributes: {
+            profiles: { data: [{ type: "profile", attributes: {
+              email: email,
+              subscriptions: { email: { marketing: { consent: "SUBSCRIBED" } } },
+            } }] },
+          },
+          relationships: { list: { data: { type: "list", id: listId } } },
+        },
+      }),
+    });
+  } catch (e) { console.error("Klaviyo list-add failed:", listId, e); }
+}
+
 // ---- Thinkific: find-or-create the user (with a real first/last name), then enroll ----
 async function thinkificEnroll(email, fullName) {
   const token = process.env.THINKIFIC_ACCESS_TOKEN;
@@ -195,8 +224,10 @@ exports.handler = async function (event) {
       } else {
         // Normal path: created in "trialing" -> the trial has started.
         const cust = await stripeCustomer(obj.customer);
-        await klaviyoEvent(cust && cust.email, "Started Trial",
+        const email = cust && cust.email;
+        await klaviyoEvent(email, "Started Trial",
           { plan: "membership", billing: billing }, evt.id);
+        await klaviyoAddToList(email, KLAVIYO_LIST_FREE_TRIAL);
       }
     }
 
