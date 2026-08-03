@@ -45,6 +45,9 @@ exports.handler = async function (event) {
   params.append("mode", cfg.mode);
   params.append("line_items[0][price]", price);
   params.append("line_items[0][quantity]", "1");
+  // Collects name + billing address and syncs it onto the newly created Customer,
+  // which is what the Stripe webhook reads (cust.name) to personalize Klaviyo/Thinkific.
+  params.append("billing_address_collection", "required");
   params.append("return_url", origin + "/thank-you.html?session_id={CHECKOUT_SESSION_ID}");
   params.append("metadata[plan]", plan);
   params.append("metadata[source]", cfg.source);
