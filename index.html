@@ -715,6 +715,10 @@ body{overflow-x:clip}
 .icpop-g-msg{font-family:var(--f-mono);font-size:11px;min-height:13px;margin-top:8px;color:var(--mut2)}
 .icpop-g-msg.err{color:var(--neg)}
 .icpop-g-fine{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.02em;color:var(--mut2);margin-top:10px}
+.icpop-g-sent{text-align:center}
+.icpop-g-sent-badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:100px;background:rgba(51,206,139,.12);color:var(--pos);border:1px solid rgba(51,206,139,.25)}
+.icpop-g-sent-copy{margin-top:12px;font-size:13.5px;color:var(--mut);line-height:1.5}
+.icpop-g-sent-copy strong{color:var(--tx);font-weight:600}
 @keyframes icppop{0%{transform:scale(.96);opacity:.5}100%{transform:scale(1);opacity:1}}
 .icpop-result.revealed .icpop-r-big{animation:icppop .5s cubic-bezier(.2,.8,.2,1)}
 .icpop-disclaimer{padding:14px clamp(26px,4vw,34px);background:var(--bg);border-top:1px solid var(--line);font-family:var(--f-mono);font-size:10.5px;line-height:1.5;color:var(--mut2)}
@@ -895,14 +899,18 @@ function openModal(name,role,poster,url){
           <div class="who"><span class="av">AD</span> Adam Downes · Google review</div>
         </div>
         <div class="icpop-r-capture">
-          <p class="icpop-r-cap-line">See what you could be earning</p>
+          <p class="icpop-r-cap-line" id="icpopGateHeadline">See what you could be earning</p>
           <form class="icpop-g-form" id="icpopGateForm" novalidate>
             <input class="icpop-g-input" id="icpopGateName" type="text" autocomplete="given-name" placeholder="First name" aria-label="First name" maxlength="60">
             <input class="icpop-g-input" id="icpopGateEmail" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" aria-label="Email address">
             <button class="icpop-g-btn" id="icpopGateBtn" type="submit">Reveal my number &rarr;</button>
           </form>
           <div class="icpop-g-msg" id="icpopGateMsg" aria-live="polite"></div>
-          <p class="icpop-g-fine">Illustrative figures, not projected returns</p>
+          <p class="icpop-g-fine" id="icpopGateFine">Illustrative figures, not projected returns</p>
+          <div class="icpop-g-sent" id="icpopGateSent" hidden aria-live="polite">
+            <div class="icpop-g-sent-badge">&check; Sent</div>
+            <p class="icpop-g-sent-copy">We just sent your number to <strong id="icpopSentEmail"></strong>. Don't see it? Check spam.</p>
+          </div>
         </div>
         <div class="icpop-r-detail">
           <div class="icpop-r-annual" id="icpopPerYear">≈ $0 a year</div>
@@ -938,6 +946,10 @@ function openModal(name,role,poster,url){
   var gateEmail = document.getElementById('icpopGateEmail');
   var gateBtn = document.getElementById('icpopGateBtn');
   var gateMsg = document.getElementById('icpopGateMsg');
+  var gateFine = document.getElementById('icpopGateFine');
+  var gateHeadline = document.getElementById('icpopGateHeadline');
+  var gateSent = document.getElementById('icpopGateSent');
+  var gateSentEmail = document.getElementById('icpopSentEmail');
 
   var style = 'bal';
   var lastMonthly = 0;
@@ -1011,9 +1023,11 @@ function openModal(name,role,poster,url){
     gateBtn.disabled = true; gateBtn.textContent = 'Revealing…';
     subscribe(addr, first, style, Math.round(lastMonthly)).then(function(ok){
       if (!ok) throw new Error('subscribe failed');
-      resultEl.classList.remove('gated');
-      resultEl.classList.add('revealed');
-      calc(true);
+      gateHeadline.textContent = 'Check your email';
+      gateForm.style.display = 'none';
+      gateFine.hidden = true;
+      gateSentEmail.textContent = addr;
+      gateSent.hidden = false;
     }).catch(function(err){
       console.error('[Theta popup calc]', err);
       gateMsg.textContent = 'Something went wrong — please try again.'; gateMsg.classList.add('err');
