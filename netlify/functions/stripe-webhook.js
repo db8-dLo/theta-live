@@ -4,7 +4,7 @@
 // built to match it exactly and to do the two things Make couldn't do cleanly:
 //   1. Detect a trial CONVERTING to paid precisely (fires once, never on renewals),
 //      using the event's previous_attributes.
-//   2. Split the customer's name into first/last for Thinkific (with a fallback).
+//   2. Split the customer's name into first/last for Thinkific and Klaviyo (with a fallback).
 //
 // Routes (mirror the Make router, keyed on the raw Stripe event):
 //   customer.subscription.created                 -> Started Trial            (Klaviyo)
@@ -83,6 +83,18 @@ function splitName(fullName, email) {
   return { first, last };
 }
 
+// Name attributes for a KLAVIYO profile. Unlike splitName (Thinkific requires both),
+// we set only what we truly have — no email-local-part fallback — so a missing name
+// lets the email template fall back cleanly (e.g. {{ first_name|default:'there' }}).
+function klaviyoNameAttrs(fullName) {
+  const raw = (fullName || "").replace(/\s+/g, " ").trim();
+  if (!raw) return {};
+  const parts = raw.split(" ");
+  const attrs = { first_name: parts[0] };
+  if (parts.length > 1) attrs.last_name = parts.slice(1).join(" ");
+  return attrs;
+}
+
 async function stripeGet(path) {
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) return null;
@@ -100,13 +112,13 @@ async function stripeCustomer(customerId) {
 
 // ---- Klaviyo server-side event (triggers metric-based flows) ----
 // unique_id = the Stripe event id, so a Stripe retry can't double-record the event.
-async function klaviyoEvent(email, metricName, properties, uniqueId) {
+async function klaviyoEvent(email, metricName, properties, uniqueId, fullName) {
   const key = process.env.KLAVIYO_PRIVATE_KEY;
   if (!key || !email) return;
   const attributes = {
     properties: properties || {},
     metric: { data: { type: "metric", attributes: { name: metricName } } },
-    profile: { data: { type: "profile", attributes: { email: email } } },
+    profile: { data: { type: "profile", attributes: Object.assign({ email: email }, klaviyoNameAttrs(fullName)) } },
   };
   if (uniqueId) attributes.unique_id = uniqueId;
   try {
@@ -124,7 +136,7 @@ async function klaviyoEvent(email, metricName, properties, uniqueId) {
 }
 
 // ---- Klaviyo list subscribe (adds the profile to a list, e.g. "Free Trial Leads") ----
-async function klaviyoAddToList(email, listId) {
+async function klaviyoAddToList(email, listId, fullName) {
   const key = process.env.KLAVIYO_PRIVATE_KEY;
   if (!key || !email || !listId) return;
   try {
@@ -139,10 +151,10 @@ async function klaviyoAddToList(email, listId) {
         data: {
           type: "profile-subscription-bulk-create-job",
           attributes: {
-            profiles: { data: [{ type: "profile", attributes: {
+            profiles: { data: [{ type: "profile", attributes: Object.assign({
               email: email,
               subscriptions: { email: { marketing: { consent: "SUBSCRIBED" } } },
-            } }] },
+            }, klaviyoNameAttrs(fullName)) }] },
           },
           relationships: { list: { data: { type: "list", id: listId } } },
         },
@@ -202,7 +214,7 @@ async function handleConversion(sub, billing, eventId) {
   const email = cust && cust.email;
   const name = cust && cust.name;
   await thinkificEnroll(email, name);
-  await klaviyoEvent(email, "Became Member", { plan: "membership", billing: billing }, eventId);
+  await klaviyoEvent(email, "Became Member", { plan: "membership", billing: billing }, eventId, name);
 }
 
 exports.handler = async function (event) {
@@ -230,9 +242,10 @@ exports.handler = async function (event) {
         // Normal path: created in "trialing" -> the trial has started.
         const cust = await stripeCustomer(obj.customer);
         const email = cust && cust.email;
+        const name = cust && cust.name;
         await klaviyoEvent(email, "Started Trial",
-          { plan: "membership", billing: billing }, evt.id);
-        await klaviyoAddToList(email, KLAVIYO_LIST_FREE_TRIAL);
+          { plan: "membership", billing: billing }, evt.id, name);
+        await klaviyoAddToList(email, KLAVIYO_LIST_FREE_TRIAL, name);
       }
     }
 
@@ -248,7 +261,7 @@ exports.handler = async function (event) {
     else if (evt.type === "customer.subscription.deleted" && billing) {
       const cust = await stripeCustomer(obj.customer);
       await klaviyoEvent(cust && cust.email, "Canceled Subscription",
-        { plan: "membership", billing: billing }, evt.id);
+        { plan: "membership", billing: billing }, evt.id, cust && cust.name);
     }
   } catch (e) {
     console.error("Webhook handler error:", e);
