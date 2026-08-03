@@ -136,7 +136,11 @@ async function klaviyoEvent(email, metricName, properties, uniqueId, fullName) {
 }
 
 // ---- Klaviyo list subscribe (adds the profile to a list, e.g. "Free Trial Leads") ----
-async function klaviyoAddToList(email, listId, fullName) {
+// NOTE: the profile-subscription-bulk-create-jobs endpoint only accepts email/phone_number/
+// subscriptions on its embedded profile — first_name/last_name are rejected (400) here even
+// though the same fields are valid on the Events API profile. The name still lands on the
+// profile via klaviyoEvent()'s call, which always fires first for every route that lists.
+async function klaviyoAddToList(email, listId) {
   const key = process.env.KLAVIYO_PRIVATE_KEY;
   if (!key || !email || !listId) return;
   try {
@@ -151,10 +155,10 @@ async function klaviyoAddToList(email, listId, fullName) {
         data: {
           type: "profile-subscription-bulk-create-job",
           attributes: {
-            profiles: { data: [{ type: "profile", attributes: Object.assign({
+            profiles: { data: [{ type: "profile", attributes: {
               email: email,
               subscriptions: { email: { marketing: { consent: "SUBSCRIBED" } } },
-            }, klaviyoNameAttrs(fullName)) }] },
+            } }] },
           },
           relationships: { list: { data: { type: "list", id: listId } } },
         },
@@ -245,7 +249,7 @@ exports.handler = async function (event) {
         const name = cust && cust.name;
         await klaviyoEvent(email, "Started Trial",
           { plan: "membership", billing: billing }, evt.id, name);
-        await klaviyoAddToList(email, KLAVIYO_LIST_FREE_TRIAL, name);
+        await klaviyoAddToList(email, KLAVIYO_LIST_FREE_TRIAL);
       }
     }
 
