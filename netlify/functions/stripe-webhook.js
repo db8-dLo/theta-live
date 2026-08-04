@@ -95,6 +95,14 @@ function klaviyoNameAttrs(fullName) {
   return attrs;
 }
 
+// Stripe gives trial_end as a Unix timestamp (seconds); Klaviyo event properties just
+// interpolate whatever string they're given, so format it into the "August 10, 2026"
+// shape the Trial Series copy expects (see {{ event.first_charge_date }} in Email #1).
+function formatDate(unixSeconds) {
+  if (!unixSeconds) return undefined;
+  return new Date(unixSeconds * 1000).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+}
+
 async function stripeGet(path) {
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) return null;
@@ -248,7 +256,7 @@ exports.handler = async function (event) {
         const email = cust && cust.email;
         const name = cust && cust.name;
         await klaviyoEvent(email, "Started Trial",
-          { plan: "membership", billing: billing }, evt.id, name);
+          { plan: "membership", billing: billing, first_charge_date: formatDate(obj.trial_end) }, evt.id, name);
         await klaviyoAddToList(email, KLAVIYO_LIST_FREE_TRIAL);
       }
     }
