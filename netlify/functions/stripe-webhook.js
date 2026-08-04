@@ -98,9 +98,15 @@ function klaviyoNameAttrs(fullName) {
 // Stripe gives trial_end as a Unix timestamp (seconds); Klaviyo event properties just
 // interpolate whatever string they're given, so format it into the "August 10, 2026"
 // shape the Trial Series copy expects (see {{ event.first_charge_date }} in Email #1).
+// Pinned to America/Toronto (the business's timezone, CAD pricing) rather than the
+// server's default (UTC on Netlify) so this always matches the date Stripe Checkout
+// showed the customer, instead of drifting a day depending on where the trial_end
+// timestamp falls relative to UTC midnight.
 function formatDate(unixSeconds) {
   if (!unixSeconds) return undefined;
-  return new Date(unixSeconds * 1000).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+  return new Date(unixSeconds * 1000).toLocaleDateString("en-US", {
+    month: "long", day: "numeric", year: "numeric", timeZone: "America/Toronto",
+  });
 }
 
 async function stripeGet(path) {
