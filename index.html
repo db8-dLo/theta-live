@@ -1054,7 +1054,7 @@ function openModal(name,role,poster,url){
   try {
     if (!sessionStorage.getItem('icpopShown')) {
       var triggered = false;
-      var timer = setTimeout(fire, 25000);
+      var timer = setTimeout(fire, 5000);
       function fire(){
         if (triggered) return;
         triggered = true;
