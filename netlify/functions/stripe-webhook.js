@@ -30,6 +30,8 @@
 //   THINKIFIC_COURSE_IDS             - comma-separated course IDs, e.g.
 //                                      "931233,1620437,931262,1059171,1679752,1654941"
 //   KLAVIYO_REVISION                 - (optional) Klaviyo API revision date; defaults below
+//   ACTIVECAMPAIGN_API_URL           - e.g. https://youraccountname.api-us1.com
+//   ACTIVECAMPAIGN_API_KEY           - from AC Settings -> Developer
 //
 // Netlify note: signature verification needs the RAW request body. Netlify passes
 // event.body as the raw string, which is exactly what we verify against.
@@ -37,6 +39,7 @@
 const crypto = require("crypto");
 const KLAVIYO_REVISION = process.env.KLAVIYO_REVISION || "2024-10-15";
 const KLAVIYO_LIST_FREE_TRIAL = "SPeeCa"; // "Free Trial Leads" list
+const AC_LIST_INTRO_STUDENTS = "7"; // "Theta Intro Students" list in ActiveCampaign — daily trades are sent here manually
 
 // ---- Stripe signature verification (no SDK, matches the no-dependency setup) ----
 function verifyStripe(rawBody, sigHeader, secret) {
@@ -182,6 +185,42 @@ async function klaviyoAddToList(email, listId) {
   } catch (e) { console.error("Klaviyo list-add failed:", listId, e); }
 }
 
+// ---- ActiveCampaign: add the contact to the manual daily-trades list ----
+// AC has no "upsert profile to list" endpoint like Klaviyo's — it's find-or-create the
+// contact via contact/sync, then a separate call to attach it to the list.
+async function activeCampaignSyncContact(email, fullName) {
+  const base = (process.env.ACTIVECAMPAIGN_API_URL || "").replace(/\/+$/, "");
+  const key = process.env.ACTIVECAMPAIGN_API_KEY;
+  if (!base || !key || !email) return null;
+  const { first, last } = splitName(fullName, email);
+  try {
+    const r = await fetch(base + "/api/3/contact/sync", {
+      method: "POST",
+      headers: { "Api-Token": key, "Content-Type": "application/json" },
+      body: JSON.stringify({ contact: { email: email, firstName: first, lastName: last } }),
+    });
+    const d = await r.json();
+    if (!r.ok) { console.error("ActiveCampaign contact sync rejected:", r.status, JSON.stringify(d)); return null; }
+    return d && d.contact && d.contact.id;
+  } catch (e) { console.error("ActiveCampaign contact sync failed:", e); return null; }
+}
+
+async function activeCampaignAddToList(email, fullName, listId) {
+  const base = (process.env.ACTIVECAMPAIGN_API_URL || "").replace(/\/+$/, "");
+  const key = process.env.ACTIVECAMPAIGN_API_KEY;
+  if (!base || !key || !email || !listId) return;
+  const contactId = await activeCampaignSyncContact(email, fullName);
+  if (!contactId) return;
+  try {
+    const r = await fetch(base + "/api/3/contactLists", {
+      method: "POST",
+      headers: { "Api-Token": key, "Content-Type": "application/json" },
+      body: JSON.stringify({ contactList: { list: listId, contact: contactId, status: 1 } }),
+    });
+    if (!r.ok) console.error("ActiveCampaign list-add rejected:", listId, r.status, await r.text());
+  } catch (e) { console.error("ActiveCampaign list-add failed:", listId, e); }
+}
+
 // ---- Thinkific: find-or-create the user (with a real first/last name), then enroll ----
 async function thinkificEnroll(email, fullName) {
   const token = process.env.THINKIFIC_ACCESS_TOKEN;
@@ -264,6 +303,7 @@ exports.handler = async function (event) {
         await klaviyoEvent(email, "Started Trial",
           { plan: "membership", billing: billing, first_charge_date: formatDate(obj.trial_end) }, evt.id, name);
         await klaviyoAddToList(email, KLAVIYO_LIST_FREE_TRIAL);
+        await activeCampaignAddToList(email, name, AC_LIST_INTRO_STUDENTS);
       }
     }
 
