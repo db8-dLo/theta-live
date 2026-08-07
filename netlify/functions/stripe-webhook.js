@@ -185,6 +185,31 @@ async function klaviyoAddToList(email, listId) {
   } catch (e) { console.error("Klaviyo list-add failed:", listId, e); }
 }
 
+// ---- Retry with backoff — AC's API has the tightest rate limit of the three services
+// this webhook calls, so a burst of concurrent trial signups can draw a 429. Retries a
+// 429 (honoring Retry-After if present) or a network error, up to maxAttempts total.
+async function fetchWithRetry(url, options, maxAttempts = 3) {
+  let lastErr, lastRes;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      const r = await fetch(url, options);
+      lastRes = r;
+      if (r.status === 429 && attempt < maxAttempts) {
+        const retryAfter = Number(r.headers.get("retry-after"));
+        const delay = retryAfter ? retryAfter * 1000 : 500 * Math.pow(2, attempt - 1);
+        await new Promise(res => setTimeout(res, delay));
+        continue;
+      }
+      return r;
+    } catch (e) {
+      lastErr = e;
+      if (attempt < maxAttempts) await new Promise(res => setTimeout(res, 500 * Math.pow(2, attempt - 1)));
+    }
+  }
+  if (lastRes) return lastRes;
+  throw lastErr;
+}
+
 // ---- ActiveCampaign: add the contact to the manual daily-trades list ----
 // AC has no "upsert profile to list" endpoint like Klaviyo's — it's find-or-create the
 // contact via contact/sync, then a separate call to attach it to the list.
@@ -194,7 +219,7 @@ async function activeCampaignSyncContact(email, fullName) {
   if (!base || !key || !email) return null;
   const { first, last } = splitName(fullName, email);
   try {
-    const r = await fetch(base + "/api/3/contact/sync", {
+    const r = await fetchWithRetry(base + "/api/3/contact/sync", {
       method: "POST",
       headers: { "Api-Token": key, "Content-Type": "application/json" },
       body: JSON.stringify({ contact: { email: email, firstName: first, lastName: last } }),
@@ -212,7 +237,7 @@ async function activeCampaignAddToList(email, fullName, listId) {
   const contactId = await activeCampaignSyncContact(email, fullName);
   if (!contactId) return;
   try {
-    const r = await fetch(base + "/api/3/contactLists", {
+    const r = await fetchWithRetry(base + "/api/3/contactLists", {
       method: "POST",
       headers: { "Api-Token": key, "Content-Type": "application/json" },
       body: JSON.stringify({ contactList: { list: listId, contact: contactId, status: 1 } }),
