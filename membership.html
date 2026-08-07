@@ -393,14 +393,14 @@
 
   /* ============ CHECKOUT ============
      Embedded Stripe Checkout — opens in a modal on THIS page (no redirect off-site).
-     LIVE mode. Netlify must have STRIPE_SECRET_KEY + STRIPE_PRICE_MEMBERSHIP_MONTHLY +
-     STRIPE_PRICE_MEMBERSHIP_ANNUAL + STRIPE_WEBHOOK_SECRET set to their live values
-     (see netlify/functions/create-checkout-session.js).
+     SANDBOX/TEST mode — swap back to live values before launch. Netlify must have
+     STRIPE_SECRET_KEY + STRIPE_PRICE_MEMBERSHIP_MONTHLY + STRIPE_PRICE_MEMBERSHIP_ANNUAL +
+     STRIPE_WEBHOOK_SECRET set to their TEST values to match (see netlify/functions/create-checkout-session.js).
      If the function ever fails, the button safely falls back to the hosted Stripe Payment Link. */
-  var STRIPE_PUBLISHABLE_KEY = "pk_live_SL2SZDe9s95BAHOyTUTNYww300DmGkzAQv";
+  var STRIPE_PUBLISHABLE_KEY = "pk_test_SqUlT5Exylbiw1VNKsdTdr6v00lBoqaTjh";
   var PAYMENT_LINKS = {
-    monthly: "https://buy.stripe.com/4gM28sdmBaDZaRT12d9sk06",
-    annual:  "https://buy.stripe.com/3cIaEYaap6nJ8JLaCN9sk07"
+    monthly: "https://buy.stripe.com/test_00w3cwbetbI32lnbGR9sk02",
+    annual:  "https://buy.stripe.com/test_eVqaEY4Q53bxgcd9yJ9sk03"
   };
 
   var checkoutInstance = null;
