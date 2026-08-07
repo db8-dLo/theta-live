@@ -21,7 +21,7 @@
 //   "Started Trial", "Became Member", "Canceled Subscription".
 //
 // Required environment variables (Netlify -> Site settings -> Environment variables):
-//   STRIPE_SECRET_KEY                - secret key (sk_test_... first, sk_live_... at launch)
+//   STRIPE_SECRET_KEY                - LIVE secret key (sk_live_...)
 //   STRIPE_WEBHOOK_SECRET            - signing secret from the Stripe webhook endpoint (whsec_...)
 //   STRIPE_PRICE_MEMBERSHIP_MONTHLY  - the CA$150/mo membership Price ID (price_...)
 //   STRIPE_PRICE_MEMBERSHIP_ANNUAL   - the CA$1,500/yr membership Price ID (price_...)

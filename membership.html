@@ -393,16 +393,14 @@
 
   /* ============ CHECKOUT ============
      Embedded Stripe Checkout — opens in a modal on THIS page (no redirect off-site).
-     To turn the embed on:
-       1. Set STRIPE_PUBLISHABLE_KEY below (pk_test_... for staging, pk_live_... at launch) — from the CLIENT'S Stripe account.
-       2. In Netlify, set STRIPE_SECRET_KEY + STRIPE_PRICE_MEMBERSHIP_MONTHLY + STRIPE_PRICE_MEMBERSHIP_ANNUAL
-          (see netlify/functions/create-checkout-session.js).
-     Until the publishable key is set — or if the function ever fails — the button safely
-     falls back to the hosted Stripe Payment Link (today's behavior). */
-  var STRIPE_PUBLISHABLE_KEY = "pk_test_SqUlT5Exylbiw1VNKsdTdr6v00lBoqaTjh";  // TEST key — swap for pk_live_... at launch
+     LIVE mode. Netlify must have STRIPE_SECRET_KEY + STRIPE_PRICE_MEMBERSHIP_MONTHLY +
+     STRIPE_PRICE_MEMBERSHIP_ANNUAL + STRIPE_WEBHOOK_SECRET set to their live values
+     (see netlify/functions/create-checkout-session.js).
+     If the function ever fails, the button safely falls back to the hosted Stripe Payment Link. */
+  var STRIPE_PUBLISHABLE_KEY = "pk_live_SL2SZDe9s95BAHOyTUTNYww300DmGkzAQv";
   var PAYMENT_LINKS = {
-    monthly: "https://buy.stripe.com/test_00w3cwbetbI32lnbGR9sk02",  // swap for the LIVE link at launch
-    annual:  "https://buy.stripe.com/test_eVqaEY4Q53bxgcd9yJ9sk03"   // swap for the LIVE link at launch
+    monthly: "https://buy.stripe.com/4gM28sdmBaDZaRT12d9sk06",
+    annual:  "https://buy.stripe.com/3cIaEYaap6nJ8JLaCN9sk07"
   };
 
   var checkoutInstance = null;

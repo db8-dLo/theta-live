@@ -274,10 +274,10 @@ document.querySelectorAll('.qa .q').forEach(function(btn){
 });
 
 /* ============ CHECKOUT CONFIG ============
-   Embedded Stripe Checkout. To activate:
-   1. Set STRIPE_PUBLISHABLE_KEY below (pk_test_... first, pk_live_... at launch) - from the CLIENT'S Stripe account.
-   2. Set STRIPE_SECRET_KEY + STRIPE_PRICE_FULL + STRIPE_PRICE_3PAY env vars in Netlify (see netlify/functions/create-checkout-session.js).
-   Until the key is set, the button falls back to FALLBACK_CHECKOUT_URL (the existing ClickFunnels checkout). */
+   Embedded Stripe Checkout, LIVE mode. STRIPE_PUBLISHABLE_KEY below is the live key from the
+   CLIENT'S Stripe account. Netlify must have STRIPE_SECRET_KEY + STRIPE_PRICE_FULL +
+   STRIPE_PRICE_3PAY set to their live values (see netlify/functions/create-checkout-session.js).
+   If the function ever fails, the button falls back to FALLBACK_CHECKOUT_URL (the existing ClickFunnels checkout). */
 var STRIPE_PUBLISHABLE_KEY="pk_live_SL2SZDe9s95BAHOyTUTNYww300DmGkzAQv";
 var PAYLINK_FULL="https://buy.stripe.com/bJebJ2aapaDZe455it9sk05";
 var PAYLINK_3PAY="https://buy.stripe.com/cNi5kE3M1fYjf8912d9sk04";

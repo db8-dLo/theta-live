@@ -1,7 +1,7 @@
 // Creates a Stripe Embedded Checkout session (used by join.html and membership.html).
 //
 // Required environment variables (Netlify -> Site settings -> Environment variables):
-//   STRIPE_SECRET_KEY                 - secret key from the CLIENT'S Stripe account (sk_test_... first, sk_live_... at launch)
+//   STRIPE_SECRET_KEY                 - LIVE secret key from the CLIENT'S Stripe account (sk_live_...)
 //   Masterclass (join.html):
 //     STRIPE_PRICE_FULL               - one-time $1,997 payment (price_...)
 //     STRIPE_PRICE_3PAY               - $747/month subscription used as the 3-pay plan (price_...)
