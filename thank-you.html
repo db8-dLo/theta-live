@@ -27,6 +27,11 @@
     .steps{list-style:none;text-align:left;margin:30px auto 0;max-width:42ch;display:flex;flex-direction:column;gap:14px}
     .steps li{display:flex;gap:13px;align-items:flex-start;color:var(--tx);font-size:15px;line-height:1.5}
     .steps .n{flex:none;width:24px;height:24px;border-radius:50%;background:rgba(0,174,239,.12);border:1px solid rgba(0,174,239,.34);color:var(--acc);display:flex;align-items:center;justify-content:center;font-family:var(--f-mono);font-size:12px;font-weight:600;margin-top:1px}
+    .benefits{list-style:none;text-align:left;margin:26px auto 0;max-width:42ch;display:flex;flex-direction:column;gap:16px;padding-top:26px;border-top:1px solid var(--line)}
+    .benefits li{display:flex;gap:12px;align-items:flex-start}
+    .benefits .c{flex:none;width:20px;height:20px;border-radius:50%;background:rgba(51,206,139,.14);border:1px solid rgba(51,206,139,.4);color:var(--pos);display:flex;align-items:center;justify-content:center;font-size:11px;margin-top:2px}
+    .benefits .t{font-weight:700;font-size:15px;color:var(--tx);letter-spacing:-.01em}
+    .benefits .d{font-size:13.5px;color:var(--mut);line-height:1.5;margin-top:2px}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;font-size:15px;letter-spacing:-.01em;padding:15px 26px;border-radius:11px;border:1px solid transparent;cursor:pointer;text-decoration:none;transition:background .2s,border-color .2s;margin-top:32px}
     .btn-p{background:var(--acc);color:var(--acc-ink);box-shadow:0 8px 30px -8px rgba(0,174,239,.55)}
     .btn-p:hover{background:#28c0f7}
@@ -43,13 +48,19 @@
     <img class="logo" src="assets/theta-logo.png" alt="Theta Trading">
     <div class="check" aria-hidden="true">✓</div>
     <div class="kick">Payment received</div>
-    <h1>You're in. Check your email to set up access.</h1>
-    <p>Thanks for joining Theta Trading. We've sent an email to set your password and unlock your courses — it usually lands within a minute or two.</p>
+    <h1>You're in. Here's what you get.</h1>
+    <p>Thanks for joining Theta Trading. Your 7-day free trial just started, and we've sent an email to set your password — it usually lands within a minute or two.</p>
     <ol class="steps">
       <li><span class="n">1</span><span>Open the email from Theta Trading and click <strong>set your password</strong>.</span></li>
       <li><span class="n">2</span><span>Choose a password and finish creating your account.</span></li>
-      <li><span class="n">3</span><span>Sign in and start with the first lesson — everything's unlocked.</span></li>
+      <li><span class="n">3</span><span>Sign in whenever you're ready — your dashboard will be waiting.</span></li>
     </ol>
+    <ul class="benefits">
+      <li><span class="c">&check;</span><span><span class="t">Daily trades, with the full research</span><br><span class="d">Every trade we make, and the thinking behind each one, in your inbox every morning.</span></span></li>
+      <li><span class="c">&check;</span><span><span class="t">A weekly live coaching call</span><br><span class="d">Watch the desk work in real time and ask questions. The part members never miss.</span></span></li>
+      <li><span class="c">&check;</span><span><span class="t">A monthly equity research report</span><br><span class="d">One stock, taken apart properly: the business, the valuation, and where we'd sell options on it.</span></span></li>
+      <li><span class="c">&check;</span><span><span class="t">All three courses</span><br><span class="d">Intro, fundamentals, and advanced, so the daily trades stop looking like magic.</span></span></li>
+    </ul>
     <a class="btn btn-p" href="https://thetatradingco.thinkific.com/users/sign_in">Go to sign in</a>
     <p class="fine">Don't see the email? Check spam/promotions, or <a href="mailto:support@thetatradingco.com">contact support</a>.</p>
   </main>
